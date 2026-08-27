@@ -86,8 +86,8 @@
         </div>
     </div>
 
-    <section class="section-wrapper--example">
-        <div class="section-inner--example">
+    <section class="section__wrapper--example">
+        <div class="section__inner--example">
             <div class="ttl-box">
                 <h2 class="section-ttl">タイトル</h2>
                 <p class="section-sub-ttl">サブタイトル</p>
