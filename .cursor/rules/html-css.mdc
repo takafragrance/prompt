@@ -1,0 +1,19 @@
+---
+description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。
+globs: "**/*.{html,php,css,jsx,tsx}"
+alwaysApply: false
+---
+
+# HTML / CSS
+
+- ファイル: `index.php` / `style.css` / `org-top.js` / 画像は `images/`。既存の `header.php` 分割があればそれに合わせ、クラス要件は守る。
+- `:root` で `--main-color`、`--accent-color`、`--section-padding`、インナー幅を管理する。PC `1140px`、スマホ `89.3333vw`。
+- `.section__inner`（または同等）は上記幅、`margin: 0 auto`。
+- BEM: `Block__Element--modifier`。セクションは `section__wrapper--*` / `section__inner--*`。
+- MQ は `@media (width <= 768px)`。SP のサイズは `vw`。
+- HTML/CSS インデントは 4 スペース。
+- 共通 CSS は `[class*=""]` を使い、header / footer / section ごとに分ける。
+- `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
+- Figma / キャプチャ / 指示が正。独自デザインや不要機能を足さない。
+
+詳細なマークアップと手順はスキル `figma-html-css` を使う。
