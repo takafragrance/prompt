@@ -1,6 +1,6 @@
 ---
-description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。
-globs: "**/*.{html,php,css,jsx,tsx}"
+description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。index.php / style.css の LP のときに使う。
+globs: "**/*.html,**/*.php,**/style.css"
 alwaysApply: false
 ---
 
@@ -16,4 +16,4 @@ alwaysApply: false
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
 - Figma / キャプチャ / 指示が正。独自デザインや不要機能を足さない。
 
-詳細なマークアップと手順はスキル `figma-html-css` を使う。
+詳細なマークアップと手順はスキル `figma-html-css` を使う。`*.tsx` / コンポーネント横の `.css` には適用しない。

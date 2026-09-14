@@ -1,15 +1,19 @@
 ---
-description: 実装方針の優先順位と出力範囲。Figma LP / 3D LP 共通。
+description: 実装方針の優先順位と出力範囲。Figma LP / 3D LP / React アプリ共通。
 alwaysApply: true
 ---
 
 # 優先順位
 
-1. `.cursor/rules/` および該当スキル（Figma は A、3D LP は B）
+1. `.cursor/rules/` および該当スキル（Figma は A、3D LP は B、React アプリは C）
 2. `AGENTS.md`（ponytail）
 3. 推測や独自のデザイン改変
 
-A（HTML/CSS/JS）と B（3D LP）が矛盾する場合、3D 関連タスクでは B を優先し、それ以外では A を優先する。
+矛盾する場合の優先:
+
+- 3D 関連 → B（スキル `three-landing`）
+- Figma HTML/CSS LP → A（スキル `figma-html-css`）
+- React アプリ（画面・状態・フォーム・ルーティング）→ C（スキル `react-app`）
 
 # 出力範囲
 

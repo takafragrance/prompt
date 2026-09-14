@@ -1,0 +1,19 @@
+---
+description: Vite + React アプリ。関数コンポーネント、状態リフト、フォーム、react-router。React アプリ開発のときに使う。
+globs: "**/*.{tsx,jsx,css}"
+alwaysApply: false
+---
+
+# React アプリ
+
+- 既存の Vite + React 構成に合わせる。新規フレームワーク・状態ライブラリは依頼がない限り入れない。
+- 関数コンポーネント + Hooks。新規は `.tsx`。既存が `.jsx` ならそれに合わせる。
+- 状態は使う場所の最も近い共通親。不要な Context を足さない。
+- リストは安定した `key`（`id`）。`index` は最終手段。
+- フォームは制御コンポーネント。`react-hook-form` は既存ファイルまたは明示依頼のときだけ。
+- 見た目は外部 CSS ファイル。コンポーネントと同じ場所に `.css` を作り `import "./Foo.css"` する。Tailwind とインライン `style` は使わない。
+- ルート追加時は `react-router-dom` と `src/routes.js` の `KNOWN_PATHS` を同時に更新する。
+- `localStorage` / fetch は失敗してもデータ喪失・白画面にしない。
+- UI 変更はブラウザで対象フローを確認してから完了とする。
+
+手順はスキル `react-app` を使う。
