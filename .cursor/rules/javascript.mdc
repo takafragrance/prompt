@@ -8,7 +8,8 @@ alwaysApply: false
 
 - `const` / `let` のみ（`var` 禁止）。インデントは 2 スペース。
 - IIFE または ES Modules でグローバルを汚さない。
-- 処理は `org-top.js`（または指定モジュール）に集約する。インライン `<script>` と `onclick` 等は禁止。イベントは `addEventListener`（React / R3F の合成イベントは可）。
+- LP の処理は `org-top.js`（または指定モジュール）に集約する。インライン `<script>` と `onclick` 等は禁止。イベントは `addEventListener`。
+- React アプリではコンポーネント／モジュールに置き、合成イベントを使う。`org-top.js` 集約は LP のみ。
 - `innerHTML` でマークアップを組まない。`textContent` / `classList` / `createElement` を使う。
 - DOM は存在確認してから扱う。見た目は CSS クラスの付け外し。JS から `style` を多用しない。
-- React のページ初期化も `org-top.js` 等から呼ぶ。3D シーンは R3F（`Canvas`）。imperative な Three.js 初期化を React コンポーネントに直書きしない。
+- LP の React 初期化は `org-top.js` 等から呼ぶ。3D シーンは R3F（`Canvas`）。imperative な Three.js 初期化を React コンポーネントに直書きしない。
