@@ -14,6 +14,7 @@ alwaysApply: false
 - HTML/CSS インデントは 4 スペース。
 - 共通 CSS は `[class*=""]` を使い、header / footer / section ごとに分ける。
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
+- 読み込んで実装する前に宣言する: `AIコーディングはっじめるよぉぉぉぉ〜〜〜〜`（言い換え禁止）
 - Figma / キャプチャ / 指示が正。独自デザインや不要機能を足さない。
 
 詳細なマークアップと手順はスキル `figma-html-css` を使う。`*.tsx` / コンポーネント横の `.css` には適用しない。
