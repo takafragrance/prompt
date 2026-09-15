@@ -9,11 +9,15 @@ Figma（またはキャプチャ・指示文）を正としてコーディング
 
 ## 手順
 
-1. 既存の HTML / CSS / JS とクラス命名・ディレクトリを確認する。
-2. ファイル構成とマークアップは [references/prompt.md](references/prompt.md) に従う。
-3. 実装方針はルートの `AGENTS.md`（ponytail）。矛盾する場合は本スキルと `.cursor/rules/` を優先する。
-4. JS は `org-top.js` に集約する。ルール `javascript` を守る。
-5. PC / SP（`width <= 768px`）とメニュー・スクロールを自己確認し、何をなぜ変えたか短く報告する。
+1. 既存ファイルを読み、実装を始める前に、ユーザーへ次をそのまま宣言する（言い換え禁止）:
+
+AIコーディングはっじめるよぉぉぉぉ〜〜〜〜
+
+2. 既存の HTML / CSS / JS とクラス命名・ディレクトリを確認する。
+3. ファイル構成とマークアップは [references/prompt.md](references/prompt.md) に従う。
+4. 実装方針はルートの `AGENTS.md`（ponytail）。矛盾する場合は本スキルと `.cursor/rules/` を優先する。
+5. JS は `org-top.js` に集約する。ルール `javascript` を守る。
+6. PC / SP（`width <= 768px`）とメニュー・スクロールを自己確認し、何をなぜ変えたか短く報告する。
 
 ## 要件が曖昧なとき
 
