@@ -13,14 +13,14 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 | 種別 | パス |
 | --- | --- |
 | エントリ | `src/main.jsx` または `src/main.tsx` |
-| ルート UI | `src/App.tsx`（既存が `.jsx` ならそれに合わせる） |
+| ルート UI | `src/App.jsx`（既存が `.tsx` ならそれに合わせる） |
 | 共通部品 | `src/components/` |
 | 機能単位 | `src/<feature>/`（既存フォルダがある場合） |
 | スタイル | コンポーネントまたは機能と同階層の `.css` |
 | ルート表 | `src/routes.js` |
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
-- 新規コンポーネントは `.tsx`。既存ファイルの拡張子は変えない。
+- 新規コンポーネントは `.jsx`。既存ファイルの拡張子は変えない。
 - 画像はプロジェクト既存の置き場（`src/assets/` や `public/`）に合わせる。
 
 ---
@@ -29,18 +29,13 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 - 関数コンポーネント + Hooks のみ。クラスコンポーネントは使わない。
 - 名前付き export（`export const Foo = ...`）。ページルートの `App` など既存が default export ならそれに合わせる。
-- props の型はファイル内に `type Props = { ... }` で置く。不要な共通型ファイルを作らない。
+- props は分割代入で受け取る。不要な共通型ファイルを作らない。既存が `.tsx` のときだけ型を足してよい。
 - 表示専用と入力専用を無理に分けない。リスト行だけが肥大化したら `FooItem` を足す。
 
-```tsx
+```jsx
 import "./ExpenseItem.css";
 
-type Props = {
-  title: string;
-  amount: number;
-};
-
-export const ExpenseItem = ({ title, amount }: Props) => {
+export const ExpenseItem = ({ title, amount }) => {
   return (
     <div className="expense-item">
       <p>{title}</p>
@@ -62,10 +57,10 @@ export const ExpenseItem = ({ title, amount }: Props) => {
 - 派生値は render 中に計算する。`useEffect` で state を同期しない。
 - `useEffect` は外部同期（`localStorage`、fetch、購読）に限定する。クリーンアップが必要なら返す。
 
-```tsx
-const [items, setItems] = useState<Item[]>(() => readStored() ?? samples);
+```jsx
+const [items, setItems] = useState(() => readStored() ?? samples);
 
-const handleAdd = (item: Omit<Item, "id">) => {
+const handleAdd = (item) => {
   setItems((prev) => [{ id: crypto.randomUUID(), ...item }, ...prev]);
 };
 
@@ -102,16 +97,16 @@ useEffect(() => {
 ## 6. スタイル
 
 - **Tailwind は使わない。** ユーティリティクラスも書かない。
-- 見た目は外部 CSS ファイルに書く。コンポーネント（または機能フォルダ）と同じ場所に `.css` を作り、TSX/JSX から `import "./Foo.css"` する。
-- 既存の同名 CSS があればそれを更新する。新規コンポーネントには `Foo.tsx` に対して `Foo.css` を足す。
+- 見た目は外部 CSS ファイルに書く。コンポーネント（または機能フォルダ）と同じ場所に `.css` を作り、JSX から `import "./Foo.css"` する。
+- 既存の同名 CSS があればそれを更新する。新規コンポーネントには `Foo.jsx` に対して `Foo.css` を足す。
 - JSX は `className` のみ。`style={{ ... }}` は使わない。
 - CSS Modules（`*.module.css`）は依頼がない限り使わない。
 - 既存のクラス名があればそれに合わせる。新規はコンポーネント名をプレフィックスにする。
 
-```tsx
+```jsx
 import "./ExpenseForm.css";
 
-export const ExpenseForm = ({ onAdd }: Props) => {
+export const ExpenseForm = ({ onAdd }) => {
   return (
     <form className="expense-form" onSubmit={handleSubmit}>
       <input className="expense-form-input" />
