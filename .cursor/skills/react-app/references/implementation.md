@@ -12,15 +12,15 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 | 種別 | パス |
 | --- | --- |
-| エントリ | `src/main.jsx` または `src/main.tsx` |
-| ルート UI | `src/App.jsx`（既存が `.tsx` ならそれに合わせる） |
+| エントリ | `src/main.tsx` |
+| ルート UI | `src/App.tsx` |
 | 共通部品 | `src/components/` |
 | 機能単位 | `src/<feature>/`（既存フォルダがある場合） |
 | スタイル | コンポーネントまたは機能と同階層の `.css` |
 | ルート表 | `src/routes.js` |
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
-- 新規コンポーネントは `.jsx`。既存ファイルの拡張子は変えない。
+- React の UI（エントリ、画面、コンポーネント）は `.tsx`。`.jsx` は新規に作らない。依頼で触る `.jsx` は同じ変更の中で `.tsx` にする。
 - 画像はプロジェクト既存の置き場（`src/assets/` や `public/`）に合わせる。
 
 ---
@@ -29,13 +29,18 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 - 関数コンポーネント + Hooks のみ。クラスコンポーネントは使わない。
 - 名前付き export（`export const Foo = ...`）。ページルートの `App` など既存が default export ならそれに合わせる。
-- props は分割代入で受け取る。不要な共通型ファイルを作らない。既存が `.tsx` のときだけ型を足してよい。
+- props は分割代入で受け取る。ファイル内に `type Props` を置く。共通型ファイルは依頼がない限り作らない。
 - 表示専用と入力専用を無理に分けない。リスト行だけが肥大化したら `FooItem` を足す。
 
-```jsx
+```tsx
 import "./ExpenseItem.css";
 
-export const ExpenseItem = ({ title, amount }) => {
+type Props = {
+  title: string;
+  amount: number;
+};
+
+export const ExpenseItem = ({ title, amount }: Props) => {
   return (
     <div className="expense-item">
       <p>{title}</p>
@@ -57,10 +62,10 @@ export const ExpenseItem = ({ title, amount }) => {
 - 派生値は render 中に計算する。`useEffect` で state を同期しない。
 - `useEffect` は外部同期（`localStorage`、fetch、購読）に限定する。クリーンアップが必要なら返す。
 
-```jsx
+```tsx
 const [items, setItems] = useState(() => readStored() ?? samples);
 
-const handleAdd = (item) => {
+const handleAdd = (item: { title: string; amount: number }) => {
   setItems((prev) => [{ id: crypto.randomUUID(), ...item }, ...prev]);
 };
 
@@ -98,12 +103,12 @@ useEffect(() => {
 
 - **Tailwind は使わない。** ユーティリティクラスも書かない。
 - 見た目は外部 CSS ファイルに書く。コンポーネント（または機能フォルダ）と同じ場所に `.css` を作り、JSX から `import "./Foo.css"` する。
-- 既存の同名 CSS があればそれを更新する。新規コンポーネントには `Foo.jsx` に対して `Foo.css` を足す。
+- 既存の同名 CSS があればそれを更新する。新規コンポーネントは `Foo.tsx` と `Foo.css`。
 - JSX は `className` のみ。`style={{ ... }}` は使わない。
 - CSS Modules（`*.module.css`）は依頼がない限り使わない。
 - 既存のクラス名があればそれに合わせる。新規はコンポーネント名をプレフィックスにする。
 
-```jsx
+```tsx
 import "./ExpenseForm.css";
 
 export const ExpenseForm = ({ onAdd }) => {
@@ -117,11 +122,11 @@ export const ExpenseForm = ({ onAdd }) => {
 
 ---
 
-## 7. JS / TS
+## 7. TS
 
-- `const` / `let` のみ。インデントは **2スペース**。
+- React の UI は `.tsx`。`const` / `let` のみ。インデントは **2スペース**。
 - `innerHTML` でマークアップを組まない。
-- `any` を増やさない。既存が JS なら無理に TS 化しない。
+- `any` を増やさない。外部入力（`JSON.parse`、API、`localStorage`）は形を確認してから使う。
 - 依存追加（状態管理、UI ライブラリ、フォームライブラリ、Tailwind）は依頼がない限り行わない。入っているもの（`react-hook-form` 等）は、その画面が既に使っているときだけ使う。
 
 ---
