@@ -1,13 +1,13 @@
 ---
 description: Vite + React アプリ。関数コンポーネント、状態リフト、フォーム、react-router。React アプリ開発のときに使う。
-globs: "**/*.{tsx,jsx,css}"
+globs: "**/*.{tsx,css}"
 alwaysApply: false
 ---
 
 # React アプリ
 
 - 既存の Vite + React 構成に合わせる。新規フレームワーク・状態ライブラリは依頼がない限り入れない。
-- 関数コンポーネント + Hooks。新規は `.jsx`。既存が `.tsx` ならそれに合わせる。
+- 関数コンポーネント + Hooks。React の UI は `.tsx` に統一する。`.jsx` は作らない。触る `.jsx` は同じ変更の中で `.tsx` にする。
 - 状態は使う場所の最も近い共通親。不要な Context を足さない。
 - リストは安定した `key`（`id`）。`index` は最終手段。
 - フォームは制御コンポーネント。`react-hook-form` は既存ファイルまたは明示依頼のときだけ。

@@ -30,7 +30,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 - 2. 状態（State）の管理と配置
 - 3. コンポーネントの設計と責務の分離
 - 4. パフォーマンスの最適化
-- 5. 型安全と堅牢性（TypeScriptを使用している場合）
+- 5. 型安全と堅牢性（`.tsx`。Props の型、`any` / `as`）
 
 各指摘は `ファイル:行`、何がまずいか、どう直すか。重大度は 必須 / 推奨 / 任意。
 
