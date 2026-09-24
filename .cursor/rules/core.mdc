@@ -1,11 +1,11 @@
 ---
-description: 実装方針の優先順位と出力範囲。Figma LP / 3D LP / React アプリ / React レビュー共通。
+description: 実装方針の優先順位と出力範囲。Figma LP / 3D LP / React アプリ / React レビュー / LP レビュー共通。
 alwaysApply: true
 ---
 
 # 優先順位
 
-1. `.cursor/rules/` および該当スキル（Figma は A、3D LP は B、React アプリは C、React レビューは D）
+1. `.cursor/rules/` および該当スキル（Figma は A、3D LP は B、React アプリは C、React レビューは D、LP レビューは E）
 2. `AGENTS.md`（ponytail）
 3. 推測や独自のデザイン改変
 
@@ -14,6 +14,7 @@ alwaysApply: true
 - 3D 関連 → B（スキル `three-landing`）
 - Figma HTML/CSS LP → A（スキル `figma-html-css`）
 - React レビュー → D（スキル `react-review`）
+- LP レビュー → E（スキル `lp-review`）
 - React アプリ（画面・状態・フォーム・ルーティング）→ C（スキル `react-app`）
 
 # 出力範囲
