@@ -14,6 +14,7 @@
 | 画像資産 | すべて `images/` フォルダ内に保存・参照する |
 
 ※ プロジェクト構成に合わせて `header.php` / `footer.php` や `css/` `js/` 配下への分割がある場合は、クラス名・要件は本プロンプトに準拠すること。
+※ 新規サイトの HTML 起点（`php.json`）はルール `html-css` とスキル `figma-html-css` の手順に従う。
 
 ---
 
@@ -78,11 +79,12 @@
 
 <main class="l-main">
     <div class="main-view">
-        <h1 class="main-view__img">
-            <img src="./images/mv.webp" alt="メインビジュアル">
-        </h1>
+        <div class="main-view__img">
+            <img src="./images/mv.webp" alt="製品概要が分かるメインビジュアル">
+        </div>
         <div class="main-view__txt">
-            <!-- lead / copy -->
+            <h1><!-- 製品名｜誰向けの価値（ページに h1 は1つのみ） --></h1>
+            <!-- 定義アンサーブロック / lead / CTA -->
         </div>
     </div>
 
@@ -136,6 +138,7 @@ AI（Cursor 等）に実装を依頼する場合、以下を必ず守ること�
 
 - 読み込んで実装する前に、次をそのまま宣言する（言い換え禁止）: `AIコーディングはっじめるよぉぉぉぉ〜〜〜〜`
 - 実装前に、対象の HTML / CSS / JS と既存クラス命名・ディレクトリ構成を確認する。
+- 新規サイトの HTML 起点はルール `html-css` / スキル手順（`php.json`）に従う。
 - Figma / キャプチャ / 指示文がある場合はそれを正とし、独自のデザイン改変や不要な機能追加をしない。
 - 要件が曖昧なときは推測で大きく進めず、確認事項を短く提示する。
 

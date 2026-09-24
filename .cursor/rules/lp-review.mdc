@@ -1,0 +1,18 @@
+---
+description: 静的 LP レビュー。UX/UI・SEO・CRO・a11y・CWV・BEM・js- 接頭辞。LPレビュー、ランディングページレビューのときに使う。
+alwaysApply: false
+---
+
+# LP レビュー
+
+実装ではなく指摘。依頼があるまでコードを変えない。
+
+- 読む前に宣言する: `レビュ〜〜〜〜やるぅぅ〜〜`（言い換え禁止）
+- ターゲットと最終目的の視点で、コンバージョン障壁を探す。不明なら確認する。
+- カテゴリを 1〜5 でスコア。指摘は Critical / High / Medium / Low。
+- 各指摘は Issue / Reason / Actionable Advice。確認できないことは評価不能。
+- 抽象的な指摘は禁止。具体的な修正指示にする。ポジティブから入り建設的に書く。
+- UX/UI（ニールセン、視覚階層、認知負荷）、SEO・AIO/LLMO、CRO、a11y、CWV・セマンティクスを見る。
+- 規約: BEM、`[class*=""]` の共通 CSS、`js-` 接頭辞、`const`/`let`・レキシカル環境、インライン JS 禁止。
+
+手順と出力フォーマットはスキル `lp-review` を使う。React コードレビューは `react-review`。
