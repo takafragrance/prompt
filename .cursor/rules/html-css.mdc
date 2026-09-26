@@ -11,10 +11,12 @@ alwaysApply: false
 - `:root` で `--main-color`、`--accent-color`、`--section-padding`、インナー幅を管理する。PC `1140px`、スマホ `89.3333vw`。
 - `.section__inner`（または同等）は上記幅、`margin: 0 auto`。
 - BEM: `Block__Element--modifier`。セクションは `section__wrapper--*` / `section__inner--*`。
+- JS から操作する対象には `js-` 接頭辞（例: `js-menu`）。詳細はルール `javascript`（`const`/`let`・レキシカル環境も同ルール）。
 - MQ は `@media (width <= 768px)`。SP のサイズは `vw`。
 - HTML/CSS インデントは 4 スペース。
 - 共通 CSS は `[class*=""]` を使い、header / footer / section ごとに分ける。
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
+- `<img>` / `<a>` / `target`・`rel` はルール `markup` に従う。
 - 読み込んで実装する前に宣言する: `AIコーディングはっじめるよぉぉぉぉ〜〜〜〜`（言い換え禁止）
 - Figma / キャプチャ / 指示が正。独自デザインや不要機能を足さない。
 - 案件の目的・ページ構成・AIO/LLMO（定義ブロック、見出し、FAQ、JSON-LD）はスキル `figma-html-css` の `requirements.md`。

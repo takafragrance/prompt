@@ -41,9 +41,17 @@
   - スマホ: `width: 89.3333vw`
   - `margin: 0 auto;` などで中央配置
 
-#### 画像
+#### 画像・リンク
 
-- `.main-view__img img` など主要画像には `width: 100%;` や `aspect-ratio` を設定し、アスペクト比を維持して表示崩れを防ぐ。
+詳細・正本はルール `markup`。要点のみ:
+
+- コンテンツ画像: `src` / `width` / `height` / `alt` / `decoding="async"` / `loading="lazy"`。必ず `<figure>`。装飾テキストは `<figcaption>`。
+- メイン画像は **原則 1 枚**（FV の LCP 候補。ロゴ・アイコンは対象外）。`fetchpriority="high"`。`loading` / `decoding` は付けない。
+- FV に画像が 2 枚以上ある場合、2 枚目以降は `fetchpriority="low"`。
+- 装飾／UI アイコン: `alt=""`・`figure` 省略可（`width` / `height` は付ける）。
+- `<a>` は裸で置かない（親は `div` / `p` / `li` 等）。
+- `target="_blank"`: お問い合わせ系はそれのみ。外部リンクは `rel="noopener noreferrer nofollow"`。それ以外の新規タブは `rel="noopener noreferrer"`。
+- `.main-view__img img` など主要画像には CSS で `width: 100%` や `aspect-ratio` を設定する。
 
 #### メディアクエリ
 
@@ -80,7 +88,15 @@
 <main class="l-main">
     <div class="main-view">
         <div class="main-view__img">
-            <img src="./images/mv.webp" alt="製品概要が分かるメインビジュアル">
+            <figure>
+                <img
+                    src="./images/mv.webp"
+                    width="750"
+                    height="1334"
+                    alt="製品概要が分かるメインビジュアル"
+                    fetchpriority="high"
+                >
+            </figure>
         </div>
         <div class="main-view__txt">
             <h1><!-- 製品名｜誰向けの価値（ページに h1 は1つのみ） --></h1>
@@ -116,6 +132,7 @@
 - グローバル汚染を防ぐため、即時関数（IIFE）やモジュールなど、適切なレキシカル環境内で記述する。
 - インデントは **2スペース** で揃える。
 - JS 内に CSS（インラインスタイルの大量付与など）を記述しない。見た目の制御は CSS クラスの付け外しで行う。
+- JS から見た目や開閉などを操作する対象のクラス名は、先頭を **`js-`** にする（例: `js-menu`、`js-faq-trigger`）。スタイリング専用の BEM クラスと混同しない。
 
 ### 保守性・安全性
 
@@ -160,6 +177,7 @@ AI（Cursor 等）に実装を依頼する場合、以下を必ず守ること�
 - ピクセルパーフェクトを目指しつつ、既存の変数・インナー幅・ブレイクポイント（`width <= 768px`）に従う。
 - PC で組んだ数値を SP へ写すときは `vw` 変換を行い、固定 `px` のままにしない。
 - 画像は `images/` 配下を参照し、パス切れやアスペクト崩れがないことを確認する。
+- `<img>` / `<a>` / `target`・`rel` はルール `markup` に従う。
 
 ### JavaScript
 
@@ -167,6 +185,7 @@ AI（Cursor 等）に実装を依頼する場合、以下を必ず守ること�
 - `innerHTML` でマークアップを組み立てない。DOM 操作は `textContent` / `classList` / `createElement` 等を使う。
 - 取得した要素は必ず存在確認してから扱う。
 - 見た目の制御は CSS クラスの付け外しに寄せ、JS から直接 `style` を多用しない。
+- `const` / `let`、レキシカル環境、操作対象の `js-` 接頭辞は「4. JS 構成要件」およびルール `javascript` に従う。
 
 ### 検証・報告
 

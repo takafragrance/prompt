@@ -17,7 +17,7 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 
 2. ターゲットユーザーと最終目的（CTA）を固定する。ユーザー指定がなければ [figma-html-css/references/requirements.md](../figma-html-css/references/requirements.md) の案件定義を使い、それでも不明なら確認する。その視点で障壁を探す。
 3. 対象の HTML / CSS / JS（および渡された URL・テキスト）を読む。チェックリストは [references/checklist.md](references/checklist.md) に従う。
-4. 実装仕様との照合は `figma-html-css` の `prompt.md` / `requirements.md`、ルール `html-css` / `javascript`。矛盾する場合は本スキルと `.cursor/rules/lp-review.mdc` を優先する。
+4. 実装仕様との照合は `figma-html-css` の `prompt.md` / `requirements.md`、ルール `html-css` / `javascript` / `markup`。矛盾する場合は本スキルと `.cursor/rules/lp-review.mdc` を優先する。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
 ## 出力ルール

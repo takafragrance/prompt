@@ -1,5 +1,5 @@
 ---
-description: org-top.js とページ JS。const/let、モジュール、インライン禁止、安全な DOM。
+description: org-top.js とページ JS。const/let、レキシカル環境、js- 接頭辞、インライン禁止、安全な DOM。
 globs: "**/*.{js,jsx,mjs,cjs,ts,tsx}"
 alwaysApply: false
 ---
@@ -7,9 +7,10 @@ alwaysApply: false
 # JavaScript
 
 - `const` / `let` のみ（`var` 禁止）。インデントは 2 スペース。
-- IIFE または ES Modules でグローバルを汚さない。
+- IIFE または ES Modules など、適切なレキシカル環境内で記述し、グローバルを汚さない。
+- JS から見た目や開閉などを操作する対象のクラス名は、先頭を **`js-`** にする（例: `js-menu`、`js-faq-trigger`）。スタイリング専用の BEM クラスと混同しない。
 - LP の処理は `org-top.js`（または指定モジュール）に集約する。インライン `<script>` と `onclick` 等は禁止。イベントは `addEventListener`。
-- React アプリではコンポーネントは `.tsx`。合成イベントを使う。`org-top.js` 集約は LP のみ。
+- React アプリではコンポーネントは `.tsx`。合成イベントを使う。`org-top.js` 集約は LP のみ。DOM をクラスで掴む場合は同様に `js-` を使う。
 - `innerHTML` でマークアップを組まない。`textContent` / `classList` / `createElement` を使う。
 - DOM は存在確認してから扱う。見た目は CSS クラスの付け外し。JS から `style` を多用しない。
 - LP の React 初期化は `org-top.js` 等から呼ぶ。3D シーンは R3F（`Canvas`）。imperative な Three.js 初期化を React コンポーネントに直書きしない。

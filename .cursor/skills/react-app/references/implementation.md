@@ -23,6 +23,36 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 - React の UI（エントリ、画面、コンポーネント）は `.tsx`。`.jsx` は新規に作らない。依頼で触る `.jsx` は同じ変更の中で `.tsx` にする。
 - 画像はプロジェクト既存の置き場（`src/assets/` や `public/`）に合わせる。
 
+### 画像・リンクマークアップ
+
+正本はルール `markup`。要点:
+
+- コンテンツ画像: 必須属性 + `<figure>` / `<figcaption>`。
+- メイン画像は原則 1 枚（`fetchPriority="high"`、lazy/async なし）。2 枚目以降は `fetchPriority="low"`。
+- 装飾／UI アイコンは `alt=""`・`figure` 省略可。
+- `<a>` / `<Link>` は裸で置かない。
+- `target="_blank"`: お問い合わせ系はそれのみ。外部は `rel="noopener noreferrer nofollow"`。その他の新規タブは `rel="noopener noreferrer"`。
+
+```tsx
+<figure>
+  <img
+    src={heroImage}
+    width={750}
+    height={1334}
+    alt="製品概要が分かるメインビジュアル"
+    fetchPriority="high"
+  />
+</figure>
+```
+
+```tsx
+<div className="ext-link">
+  <a href="https://example.com" target="_blank" rel="noopener noreferrer nofollow">
+    関連サイト
+  </a>
+</div>
+```
+
 ---
 
 ## 2. コンポーネント
@@ -126,6 +156,8 @@ export const ExpenseForm = ({ onAdd }) => {
 ## 7. TS
 
 - React の UI は `.tsx`。`const` / `let` のみ。インデントは **2スペース**。
+- グローバル汚染を避ける（モジュールのレキシカル環境内で書く）。
+- DOM をクラス名で掴む場合は先頭を **`js-`** にする（例: `js-menu`）。合成イベントだけで足りる場合は不要。
 - `innerHTML` でマークアップを組まない。
 - `any` を増やさない。外部入力（`JSON.parse`、API、`localStorage`）は形を確認してから使う。
 - 依存追加（状態管理、UI ライブラリ、フォームライブラリ、Tailwind）は依頼がない限り行わない。入っているもの（`react-hook-form` 等）は、その画面が既に使っているときだけ使う。

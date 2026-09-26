@@ -104,3 +104,14 @@ React の UI は `.tsx`。`.jsx` のコンポーネントは指摘する。
 
 - コンポーネント props に `type Props = { ... }`（または同等）があるか。
 - 必須と任意が実態と合っているか。`children` やコールバックの型が `Function` / `any` になっていないか。
+
+---
+
+## 6. 画像・リンクマークアップ
+
+ルール `markup` に照合する。
+
+- コンテンツ画像の必須属性・`<figure>`、装飾例外。
+- メイン画像は原則 1 枚（`fetchPriority="high"`）。2 枚目以降は `fetchPriority="low"`。high に lazy/async が付いていないか。
+- `<a>` / `<Link>` が裸でないか。
+- `target="_blank"` の `rel`（お問い合わせ系は `target` のみ、外部は `noopener noreferrer nofollow`、その他は `noopener noreferrer`）。
