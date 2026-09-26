@@ -16,4 +16,6 @@ alwaysApply: false
 - 規約: BEM、`[class*=""]` の共通 CSS、`js-` 接頭辞、`const`/`let`・レキシカル環境、インライン JS 禁止。
 - 画像・リンク: ルール `markup`（必須属性・メイン画像 1 枚・`target`/`rel`・裸の `a` 禁止など）もレビュー対象。
 
+修正箇所を明示し、git で修正箇所を教えるとともに、どう修正したらいいかを明示する。
+
 手順と出力フォーマットはスキル `lp-review` を使う。React コードレビューは `react-review`。
