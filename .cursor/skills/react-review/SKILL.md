@@ -33,7 +33,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 - 5. 型安全と堅牢性（`.tsx`。Props の型、`any` / `as`）
 - 6. 画像・リンクマークアップ（ルール `markup`）
 
-各指摘は `ファイル:行`、何がまずいか、どう直すか。重大度は 必須 / 推奨 / 任意。
+各指摘は `ファイル:行` で修正箇所を明示し、git で教え、何がまずいか・どう直すかを書く。重大度は 必須 / 推奨 / 任意。
 
 ## 参照
 

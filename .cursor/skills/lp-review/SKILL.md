@@ -28,6 +28,7 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 - 各カテゴリを **1〜5** でスコアリングする（評価不能のカテゴリはスコア欄を `—`）。
 - 各指摘に重要度 **Critical / High / Medium / Low** を付ける。
 - 各指摘は次の 3 点セットにする: **Issue**（指摘）/ **Reason**（理由）/ **Actionable Advice**（具体的改善案）。
+- 修正箇所を明示し、git で修正箇所を教えるとともに、どう修正したらいいかを明示する。
 - 出力は次の Markdown 構成に固定する（該当なしの節は「問題なし」と一行）。
 
 ### 出力テンプレート
