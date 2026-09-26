@@ -16,7 +16,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 レビュ〜〜〜〜やるぅぅ〜〜
 
 2. 対象の `src/` と差分を読む。呼び出し元まで辿る。
-3. チェックリストは [references/checklist.md](references/checklist.md) に従う。
+3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像・リンクはルール `markup` も照合する。
 4. 実装方針はルートの `AGENTS.md`（ponytail）。矛盾する場合は本スキルと `.cursor/rules/react-review.mdc` を優先する。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
@@ -31,6 +31,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 - 3. コンポーネントの設計と責務の分離
 - 4. パフォーマンスの最適化
 - 5. 型安全と堅牢性（`.tsx`。Props の型、`any` / `as`）
+- 6. 画像・リンクマークアップ（ルール `markup`）
 
 各指摘は `ファイル:行`、何がまずいか、どう直すか。重大度は 必須 / 推奨 / 任意。
 

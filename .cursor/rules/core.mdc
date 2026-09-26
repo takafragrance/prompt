@@ -17,6 +17,11 @@ alwaysApply: true
 - LP レビュー → E（スキル `lp-review`）
 - React アプリ（画面・状態・フォーム・ルーティング）→ C（スキル `react-app`）
 
+共通マークアップ・JS（スキル横断）:
+
+- 画像・リンク（`img` / `figure` / `a` / `target`・`rel`）→ ルール `markup`
+- JS（`const`/`let`・レキシカル環境・`js-`）→ ルール `javascript`
+
 # 出力範囲
 
 - 依頼されたファイル・範囲のみを変える。無関係なリファクタ・ライブラリ追加はしない。

@@ -1,0 +1,101 @@
+---
+description: img / figure、a のラップ、fetchpriority、target=_blank の rel。HTML / JSX の画像・リンクのときに使う。
+globs: "**/*.{html,php,tsx,jsx}"
+alwaysApply: false
+---
+
+# 画像・リンクマークアップ
+
+正本はこのファイル。他ルール／スキルはここを参照し、全文を複製しない。
+
+## 通常の img（コンテンツ画像）
+
+必須属性を漏れなく:
+
+- `src`
+- `width`（適切な数値）
+- `height`（適切な数値）
+- `alt`（画像の内容を示す具体的なテキスト）
+- `decoding="async"`
+- `loading="lazy"`
+
+- `<img>` は単独配置せず、必ず `<figure>` で囲む。
+- 画像に付随する装飾系の要素・テキストは `<figcaption>` に書く。
+
+## メイン画像（ファーストビュー / LCP）
+
+### 判定基準
+
+- **原則 1 枚**。ファーストビューで最も大きく見えるコンテンツ画像（LCP 候補）のみをメイン画像とする。
+- ヘッダーロゴ、アイコン、サムネイル、背景装飾はメイン画像にしない。
+- メイン画像: `fetchpriority="high"`（React では `fetchPriority="high"`）。`loading="lazy"` と `decoding="async"` は付けない。
+
+### 2 枚以上ある場合
+
+- 1 枚目のみ `fetchpriority="high"`（`fetchPriority="high"`）。
+- **2 枚目以降**は `fetchpriority="low"`（`fetchPriority="low"`）。通常どおり `decoding="async"` `loading="lazy"` を付けてよい（high との矛盾を避ける）。
+
+## 例外（装飾・UI アイコン）
+
+次は「通常の img」の必須セットを緩和してよい。
+
+- 隣接テキストやボタンの `aria-label` で意味が伝わる **装飾／UI アイコン**: `alt=""` 可。`figure` は省略可。
+- それでも `width` / `height` / `src` は付ける。遅延は `decoding="async"` `loading="lazy"` でよい（LCP でない場合）。
+
+## 構造（a / Link）
+
+- `<a>` および React Router 等の `<Link>`（最終的にアンカーになるもの）は **裸で置かない**。必ず適切な親要素（`div` / `p` / `li` など）で囲む。
+- `section` / `main` / `header` / `footer` の直下にリンクだけを置かない。
+- 文中リンク（`<p>…<a>…</a>…</p>`）は親が `p` 等なら可。
+
+## target="_blank" と rel
+
+| 種別 | 属性 |
+| --- | --- |
+| お問い合わせ系（フォーム・問い合わせページ・mailto 等） | `target="_blank"` **のみ**（`rel` は付けない） |
+| 外部リンク（上記以外） | `target="_blank"` + `rel="noopener noreferrer nofollow"` |
+| それ以外で新しいタブを開く場合 | `target="_blank"` + `rel="noopener noreferrer"` |
+
+```html
+<figure>
+    <img
+        src="./images/example.webp"
+        width="640"
+        height="360"
+        alt="店舗外観の写真"
+        decoding="async"
+        loading="lazy"
+    >
+    <figcaption>渋谷店の外観</figcaption>
+</figure>
+```
+
+```html
+<figure>
+    <img
+        src="./images/mv.webp"
+        width="750"
+        height="1334"
+        alt="製品概要が分かるメインビジュアル"
+        fetchpriority="high"
+    >
+</figure>
+```
+
+```html
+<div class="cta">
+    <a href="#trial">無料で試す</a>
+</div>
+```
+
+```html
+<div class="ext-link">
+    <a href="https://example.com" target="_blank" rel="noopener noreferrer nofollow">関連サイト</a>
+</div>
+```
+
+```html
+<div class="contact-link">
+    <a href="/contact" target="_blank">お問い合わせ</a>
+</div>
+```

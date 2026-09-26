@@ -16,5 +16,6 @@ alwaysApply: false
 - ルート追加時は `react-router-dom` と `src/routes.js` の `KNOWN_PATHS` を同時に更新する。
 - `localStorage` / fetch は失敗してもデータ喪失・白画面にしない。
 - UI 変更はブラウザで対象フローを確認してから完了とする。
+- `<img>` / `<a>` / `<Link>` / `target`・`rel` はルール `markup` に従う。
 
 手順はスキル `react-app` を使う。
