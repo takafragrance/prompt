@@ -12,6 +12,7 @@ alwaysApply: false
 - リストは安定した `key`（`id`）。`index` は最終手段。
 - フォームは制御コンポーネント。`react-hook-form` は既存ファイルまたは明示依頼のときだけ。
 - 見た目は外部 CSS ファイル。コンポーネントと同じ場所に `.css` を作り `import "./Foo.css"` する。Tailwind とインライン `style` は使わない。
+- CSS のインデント（タブサイズ）は **4 スペース**。TSX / JS の 2 スペースと混ぜない。
 - ルート追加時は `react-router-dom` と `src/routes.js` の `KNOWN_PATHS` を同時に更新する。
 - `localStorage` / fetch は失敗してもデータ喪失・白画面にしない。
 - UI 変更はブラウザで対象フローを確認してから完了とする。
