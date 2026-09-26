@@ -115,3 +115,12 @@ React の UI は `.tsx`。`.jsx` のコンポーネントは指摘する。
 - メイン画像は原則 1 枚（`fetchPriority="high"`）。2 枚目以降は `fetchPriority="low"`。high に lazy/async が付いていないか。
 - `<a>` / `<Link>` が裸でないか。
 - `target="_blank"` の `rel`（お問い合わせ系は `target` のみ、外部は `noopener noreferrer nofollow`、その他は `noopener noreferrer`）。
+
+---
+
+## 7. CSS 規約
+
+ルール `react` に照合する。
+
+- ネガティブマージン（`margin` の負値。例: `margin-top: -16px`）を使っていないか。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
+- Tailwind・インライン `style` で見た目を組んでいないか。外部 `.css` に寄せているか。
