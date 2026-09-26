@@ -13,6 +13,7 @@ alwaysApply: false
 - BEM: `Block__Element--modifier`。セクションは `section__wrapper--*` / `section__inner--*`。
 - JS から操作する対象には `js-` 接頭辞（例: `js-menu`）。詳細はルール `javascript`（`const`/`let`・レキシカル環境も同ルール）。
 - MQ は `@media (width <= 768px)`。SP のサイズは `vw`。
+- ネガティブマージン（`margin` の負値）は使用しない。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
 - HTML/CSS インデントは 4 スペース。
 - 共通 CSS は `[class*=""]` を使い、header / footer / section ごとに分ける。
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。

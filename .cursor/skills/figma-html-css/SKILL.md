@@ -16,7 +16,7 @@ Figma（またはキャプチャ・指示文）を正としてコーディング
 AIコーディングはっじめるよぉぉぉぉ〜〜〜〜
 
 4. 既存の HTML / CSS / JS とクラス命名・ディレクトリを確認する。
-5. ファイル構成とマークアップは [references/prompt.md](references/prompt.md) に従う。画像・リンクはルール `markup`。
+5. ファイル構成とマークアップは [references/prompt.md](references/prompt.md) に従う。画像・リンクはルール `markup`。ネガティブマージン（`margin` の負値）は使わない。
 6. 実装方針はルートの `AGENTS.md`（ponytail）。矛盾する場合は本スキルと `.cursor/rules/` を優先する。
 7. JS は `org-top.js` に集約する。ルール `javascript` を守る（`const`/`let`、レキシカル環境、`js-` 接頭辞）。
 8. PC / SP（`width <= 768px`）とメニュー・スクロールに加え、要件の受け入れ条件（定義ブロック・FAQ 全文・構造化データ等）を自己確認し、何をなぜ変えたか短く報告する。
