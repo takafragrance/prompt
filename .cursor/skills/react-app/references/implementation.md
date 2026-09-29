@@ -16,7 +16,7 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 | ルート UI | `src/App.tsx` |
 | 共通部品 | `src/components/` |
 | 機能単位 | `src/<feature>/`（既存フォルダがある場合） |
-| スタイル | コンポーネントまたは機能と同階層の `.css` |
+| スタイル | Tailwind（`className`）。エントリで `@import "tailwindcss"` |
 | ルート表 | `src/routes.js` |
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
@@ -63,8 +63,6 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 - 表示専用と入力専用を無理に分けない。リスト行だけが肥大化したら `FooItem` を足す。
 
 ```tsx
-import "./ExpenseItem.css";
-
 type Props = {
   title: string;
   amount: number;
@@ -72,9 +70,9 @@ type Props = {
 
 export const ExpenseItem = ({ title, amount }: Props) => {
   return (
-    <div className="expense-item">
-      <p>{title}</p>
-      <p>{amount}円</p>
+    <div className="flex items-baseline justify-between gap-4 py-2">
+      <p className="text-base text-zinc-800">{title}</p>
+      <p className="text-sm text-zinc-600">{amount}円</p>
     </div>
   );
 };
@@ -129,24 +127,22 @@ useEffect(() => {
 
 ---
 
-## 6. スタイル
+## 6. スタイル（Tailwind CSS）
 
-- **Tailwind は使わない。** ユーティリティクラスも書かない。
-- 見た目は外部 CSS ファイルに書く。コンポーネント（または機能フォルダ）と同じ場所に `.css` を作り、JSX から `import "./Foo.css"` する。
-- ネガティブマージン（`margin` の負値）は使用しない。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
-- CSS のインデント（タブサイズ）は **4スペース**。TSX / JS の 2 スペースと混ぜない。
-- 既存の同名 CSS があればそれを更新する。新規コンポーネントは `Foo.tsx` と `Foo.css`。
-- JSX は `className` のみ。`style={{ ... }}` は使わない。
-- CSS Modules（`*.module.css`）は依頼がない限り使わない。
-- 既存のクラス名があればそれに合わせる。新規はコンポーネント名をプレフィックスにする。
+- 見た目は **Tailwind CSS** のユーティリティを `className` に書く。
+- プロジェクトは Vite + `@tailwindcss/vite`。エントリ CSS（例: `src/index.css`）で `@import "tailwindcss";` する。未導入なら依存とプラグインを足してから実装する。
+- コンポーネント横の新規 `.css` / BEM / CSS Modules は作らない。既存の大きな `.css` を触る依頼なら、可能ならその範囲を Tailwind の `className` へ寄せる。
+- 例外として `@keyframes` や `@theme` などユーティリティに落ちない定義だけ、エントリ近傍の CSS に最小限残してよい。
+- ネガティブマージン（`margin` の負値 / `-mt-*` 等）は使用しない。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
+- JSX は `className` のみ。`style={{ ... }}` は使わない（CSS 変数の動的代入など、ユーティリティで表現できない場合のみ例外を明示）。
+- 条件付きクラスは文字列連結または小さなヘルパで足りる範囲に留める。クラス結合ライブラリは依頼がない限り追加しない。
+- レスポンシブは Tailwind のブレークポイント（例: `md:`）。デザイン指定が `width <= 768px` なら `max-md:` / `md:` で合わせる。
 
 ```tsx
-import "./ExpenseForm.css";
-
 export const ExpenseForm = ({ onAdd }) => {
   return (
-    <form className="expense-form" onSubmit={handleSubmit}>
-      <input className="expense-form-input" />
+    <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <input className="rounded border border-zinc-300 px-3 py-2 text-base" />
     </form>
   );
 };
@@ -161,7 +157,7 @@ export const ExpenseForm = ({ onAdd }) => {
 - DOM をクラス名で掴む場合は先頭を **`js-`** にする（例: `js-menu`）。合成イベントだけで足りる場合は不要。
 - `innerHTML` でマークアップを組まない。
 - `any` を増やさない。外部入力（`JSON.parse`、API、`localStorage`）は形を確認してから使う。
-- 依存追加（状態管理、UI ライブラリ、フォームライブラリ、Tailwind）は依頼がない限り行わない。入っているもの（`react-hook-form` 等）は、その画面が既に使っているときだけ使う。
+- 依存追加（状態管理、UI ライブラリ、フォームライブラリ）は依頼がない限り行わない。`tailwindcss` / `@tailwindcss/vite` はスタイルの前提として未導入なら入れてよい。入っているもの（`react-hook-form` 等）は、その画面が既に使っているときだけ使う。
 
 ---
 
@@ -182,5 +178,5 @@ UI / 状態 / ルーティングを変えたら、スクリーンショット 1 
 
 - 秘密情報を埋め込まない。破壊的な git 操作をしない。
 - 依頼範囲外のリファクタ、ファイル分割、README 更新をしない。
-- Tailwind とインライン `style` で見た目を組まない。
-- ネガティブマージン（`margin` の負値）を使わない。
+- 見た目をコンポーネント専用の新規 `.css` やインライン `style` で組まない（Tailwind を使う）。
+- ネガティブマージン（`margin` の負値 / `-m-*`）を使わない。

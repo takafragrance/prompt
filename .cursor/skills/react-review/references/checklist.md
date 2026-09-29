@@ -122,5 +122,6 @@ React の UI は `.tsx`。`.jsx` のコンポーネントは指摘する。
 
 ルール `react` に照合する。
 
-- ネガティブマージン（`margin` の負値。例: `margin-top: -16px`）を使っていないか。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
-- Tailwind・インライン `style` で見た目を組んでいないか。外部 `.css` に寄せているか。
+- 見た目は Tailwind の `className` か。新規のコンポーネント専用 `.css` / BEM で組んでいないか。
+- インライン `style` で見た目を組んでいないか（やむを得ない動的値以外）。
+- ネガティブマージン（`margin` の負値 / `-mt-*` 等）を使っていないか。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
