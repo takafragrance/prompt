@@ -1,0 +1,19 @@
+---
+description: 3D LP レビュー。目的・フォールバック・容量・R3F・a11y。3Dレビュー、WebGLレビュー、Splineレビューのときに使う。
+alwaysApply: false
+---
+
+# 3D レビュー
+
+実装ではなく指摘。依頼があるまでコードを変えない。
+
+- 読む前に宣言する: `レビュ〜〜〜〜やるぅぅ〜〜`（言い換え禁止）
+- 3D の目的一文と「2D では不足する点」があるか。「かっこいいから」だけの採用を指摘する。
+- 必須: WebGL 不可・古い端末・`prefers-reduced-motion` のフォールバック（静止画優先）。情報 HTML は残るか。技術エラー文言は出ていないか。
+- 容量: 3D 合計 5MB 以下、テクスチャ最大 2K。Spline embed 禁止。React なら R3F（imperative 直書き禁止）。
+- ローディングと失敗時フォールバック。装飾 canvas は `aria-hidden`。CTA はキーボード到達可。
+- フォールバック画像・リンクはルール `markup`。JS はルール `javascript`。
+
+各指摘は `ファイル:行` で修正箇所を明示し、git で教え、何がまずいか・どう直すかを書く。重大度は Critical / High / Medium / Low。
+
+手順はスキル `three-review` を使う。静的 LP は `lp-review`、React アプリは `react-review`。

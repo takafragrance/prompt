@@ -1,0 +1,20 @@
+---
+description: React ブランド LP。ヒーロー制約、Tailwind、ブランド先行。React LP、ブランドページ、fashion/house/tobacco landing のときに使う。
+globs: "**/*landing*/**/*.{tsx,css},**/immersive/**/*.{tsx,css}"
+alwaysApply: false
+---
+
+# React ランディング
+
+静的 PHP/BEM（`figma-html-css`）ではなく、Vite + React + Tailwind のブランド／LP 画面向け。
+
+- 既存の Vite + React 構成。見た目は Tailwind。ネガティブマージンとインライン `style` は禁止（ルール `react`）。
+- ファーストビューは **1 つの構図**。ブランドがヒーロー級。ナビを外しても他社ページに見えないこと。
+- ヒーロー予算: ブランド、見出し 1、短い補足 1、CTA 群 1、支配的な画像 1。統計・予定・住所・浮遊バッジを載せない。
+- ヒーロー画像はフルブリード（inset カード・横パネル・コラージュにしない）。ヒーロー上に切り離しバッジを載せない。
+- ヒーローにカードを使わない。カードはユーザー操作の容器として必要なときだけ。
+- セクションは 1 目的・見出し 1・短い補足。動きは 2〜3 の意図的なものに限定。
+- ルート追加時は `react-router-dom` と `src/routes.js` の `KNOWN_PATHS` を同時更新。
+- 画像・リンクはルール `markup`。a11y はルール `a11y`。
+
+手順はスキル `react-landing` を使う。CRUD・状態中心は `react-app`。3D 中核は `three-landing`。
