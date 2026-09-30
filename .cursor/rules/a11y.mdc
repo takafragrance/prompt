@@ -1,0 +1,18 @@
+---
+description: アクセシビリティ最低ライン。フォーカス、キーボード、名前付け、モーション。HTML / JSX / PHP の UI 実装のときに使う。
+globs: "**/*.{html,php,tsx,jsx}"
+alwaysApply: false
+---
+
+# アクセシビリティ
+
+実装時の最低ライン。詳細な監査は `lp-review` / `react-review` / `three-review`。
+
+- キーボードだけで主 CTA・ナビ・メニュー・ダイアログ操作に到達できること。
+- フォーカスが見えること（`outline: none` だけにして代替を付けない）。
+- アイコンのみボタンは見えるテキストか `aria-label`（または同等）で名前を付ける。
+- 意味を色だけに依存させない。
+- 装飾画像は `alt=""`。コンテンツ画像はルール `markup`。
+- モーダル／メニューを開いたらフォーカスを中に移し、閉じたら開く前の位置へ戻す。
+- `prefers-reduced-motion: reduce` では装飾アニメを抑える（3D はフォールバックへ）。
+- 装飾の 3D canvas は `aria-hidden`。情報は HTML 側に置く。

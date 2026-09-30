@@ -17,5 +17,7 @@ alwaysApply: false
 - `localStorage` / fetch は失敗してもデータ喪失・白画面にしない。
 - UI 変更はブラウザで対象フローを確認してから完了とする。
 - `<img>` / `<a>` / `<Link>` / `target`・`rel` はルール `markup` に従う。
+- フォーカス・キーボード・名前付けはルール `a11y` に従う。
+- ブランド／ヒーロー LP はスキル `react-landing`。バグ修正はスキル `bugfix`。
 
 手順はスキル `react-app` を使う。

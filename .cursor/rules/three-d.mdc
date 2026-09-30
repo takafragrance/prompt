@@ -12,6 +12,7 @@ alwaysApply: false
 - モデルは Spline で GLB。ランタイムは Three.js。React では R3F。Spline embed は使わない。
 - 合計 5MB 以下、テクスチャ最大 2K。読み込み中はローディング、失敗時はフォールバック。
 - キャンバスが装飾なら `aria-hidden`。CTA はキーボード到達可。
-- JS はルール `javascript` に従う。
+- JS はルール `javascript` に従う。a11y はルール `a11y`。
+- レビュー依頼はスキル `three-review`（実装は変えず指摘のみ）。
 
 手順と受け入れ条件はスキル `three-landing` を使う。
