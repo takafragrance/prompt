@@ -101,6 +101,7 @@
 
 ### CSS・命名
 
+- header / footer が `header.php` / `footer.php` に分かれ、メインから `render()` で読み込まれているか。`index.php` への直書きは指摘。
 - クラスが BEM（`Block__Element--modifier`）に従っているか。
 - セクションは `section__wrapper--*` / `section__inner--*`（または同等）か。
 - 共通スタイルは `[class*=""]` 等でまとめ、header / footer / section ごとに分けているか。サイト全体への無差別共通化は指摘。
