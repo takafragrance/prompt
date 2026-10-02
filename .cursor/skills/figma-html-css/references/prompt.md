@@ -8,13 +8,34 @@
 
 | 種別 | パス / ファイル名 |
 | --- | --- |
-| HTML | `index.php` |
+| HTML（メイン） | `index.php` |
+| header | `header.php` |
+| footer | `footer.php` |
 | CSS | `style.css` |
 | JavaScript | `org-top.js` |
 | 画像資産 | すべて `images/` フォルダ内に保存・参照する |
 
-※ プロジェクト構成に合わせて `header.php` / `footer.php` や `css/` `js/` 配下への分割がある場合は、クラス名・要件は本プロンプトに準拠すること。
-※ 新規サイトの HTML 起点（`php.json`）はルール `html-css` とスキル `figma-html-css` の手順に従う。
+- `header.php` と `footer.php` は必ず個別ファイルにする。`index.php` に `<header>` / `<footer>` を直書きしない。
+- メイン（`index.php`）では `render()` で読み込む。定義が無いプロジェクトだけ、`index.php` 先頭に置く。
+
+```php
+<?php
+if (!function_exists('render')) {
+    function render(string $file): void
+    {
+        include __DIR__ . '/' . $file;
+    }
+}
+?>
+```
+
+```php
+<?php render('header.php'); ?>
+<?php render('footer.php'); ?>
+```
+
+- `css/` `js/` 配下への分割がある場合も、クラス名・要件は本プロンプトに準拠する。
+- 新規サイトの HTML 起点（`php.json`）はルール `html-css` とスキル `figma-html-css` の手順に従う。スニペット上の header / footer 中身は各ファイルへ移し、`index.php` 側は `render()` にする。
 
 ---
 
@@ -77,14 +98,10 @@
 
 ## 3. 共通 HTML 構造
 
-各パーツは以下のクラス構成で実装する。セクションごとに `modifier` を付与してスタイルを制御する。
+各パーツは以下のクラス構成で実装する。セクションごとに `modifier` を付与してスタイルを制御する。header と footer は個別ファイルとし、`index.php` から `render()` で読み込む。
 
-```html
-<header class="org-header">
-    <div class="org-header__inner">
-        <!-- header contents -->
-    </div>
-</header>
+```php
+<?php render('header.php'); ?>
 
 <main class="l-main">
     <div class="main-view">
@@ -116,6 +133,22 @@
     </section>
 </main>
 
+<?php render('footer.php'); ?>
+```
+
+`header.php`:
+
+```html
+<header class="org-header">
+    <div class="org-header__inner">
+        <!-- header contents -->
+    </div>
+</header>
+```
+
+`footer.php`:
+
+```html
 <footer class="org-footer">
     <div class="org-footer__inner">
         <!-- footer contents -->
@@ -162,7 +195,7 @@ AI（Cursor 等）に実装を依頼する場合、以下を必ず守ること�
 
 ### 出力の範囲
 
-- 依頼されたファイル・範囲のみを変更する。無関係なリファクタ、ファイル分割、ライブラリ追加は行わない。
+- 依頼されたファイル・範囲のみを変更する。無関係なリファクタ、ファイル分割、ライブラリ追加は行わない。header / footer の `header.php` / `footer.php` への分離と `render()` 読み込みは、新規および header / footer を触る実装では行う。
 - 新規ファイルが必要な場合は、本プロンプトの構成（`images/` 参照、BEM、共通クラス分割など）に合わせる。
 - ドキュメント（README 等）や設定ファイルは、明示的に求められない限り作成・更新しない。
 

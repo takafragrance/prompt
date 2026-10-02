@@ -10,7 +10,7 @@ Figma（またはキャプチャ・指示文）を正としてコーディング
 ## 手順
 
 1. 実装前に [references/requirements.md](references/requirements.md) で目的・ブランド・ページ構成・AIO/LLMO（定義ブロック、見出し、FAQ の初期 HTML、JSON-LD、信頼情報）を確認する。実案件がサンプル（NORI）と違う場合は、差分をユーザーに確認してから進める。
-2. **新規サイト制作**では、HTML 骨格の起点を Cursor User スニペット **`php.json`**（`~/Library/Application Support/Cursor/User/snippets/php.json`）とする。展開は当該ファイルの `prefix` に従う。`html.json` は使わない。既存ページの改修では既存マークアップを優先し、不足している AIO/LLMO 要素だけ足す。エージェントが新規 `index.php` 等を書く場合も、このスニペットと同等の骨格を出す。
+2. **新規サイト制作**では、HTML 骨格の起点を Cursor User スニペット **`php.json`**（`~/Library/Application Support/Cursor/User/snippets/php.json`）とする。展開は当該ファイルの `prefix` に従う。`html.json` は使わない。既存ページの改修では既存マークアップを優先し、不足している AIO/LLMO 要素だけ足す。エージェントが新規 `index.php` 等を書く場合も、このスニペットと同等の骨格を出す。ただし `<header>` と `<footer>` は `header.php` / `footer.php` に切り出し、`index.php` では `render('header.php')` と `render('footer.php')` で読み込む。直書きしない。`render()` が無いときだけ `index.php` 先頭で定義する（ルール `html-css`）。依頼が header / footer に触れない既存改修では、分割のためだけに動かさない。
 3. 既存ファイルを読み、実装を始める前に、ユーザーへ次をそのまま宣言する（言い換え禁止）:
 
 AIコーディングはっじめるよぉぉぉぉ〜〜〜〜
