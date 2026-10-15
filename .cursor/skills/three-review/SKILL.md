@@ -28,7 +28,7 @@ description: Reviews 3D landing pages for purpose, fallbacks, asset size limits,
 - 各カテゴリを **1〜5** でスコアリングする（評価不能は `—`）。
 - 各指摘に重要度 **Critical / High / Medium / Low**。
 - 各指摘は **Issue / Reason / Actionable Advice**。
-- 修正箇所を `ファイル:行` で明示し、git で教え、直し方を書く。
+- 修正箇所を `ファイル:行` で明示し、直し方を書く。本文中の個別指摘はコードブロックにしない。
 
 ### 出力テンプレート
 
@@ -51,6 +51,24 @@ description: Reviews 3D landing pages for purpose, fallbacks, asset size limits,
 
 | 重要度 | カテゴリ | Issue | Reason | Actionable Advice | 根拠（ファイル:行 または評価不能） |
 | --- | --- | --- | --- | --- | --- |
+
+5. **修正指示（一括コピー）** — 必ず最後に置く
+
+直し方のある指摘を、次の `text` コードブロック **1 つだけ** にまとめる。チャットのコピーボタンで全件を一度に取れるようにする。表の再掲や複数ブロックへ分けない。評価不能で直し方がない項目は入れない。0 件なら中身は `修正なし` の一行。
+
+ブロックの先頭は `以下の指摘をすべて修正してください。`。各件は空行で区切り、指摘一覧と同じ順・同じ件数にする。
+
+````text
+以下の指摘をすべて修正してください。
+
+1. [High] src/Hero.tsx:18
+問題: WebGL 失敗時の静止画がない
+修正: 読み込み失敗で img のフォールバックを出す
+
+2. [Medium] src/Scene.tsx:40
+問題: 装飾 canvas に名前が付いている
+修正: canvas を aria-hidden にする
+````
 
 ## 参照
 
