@@ -14,10 +14,12 @@ description: Implements immersive 3D landing pages with Three.js or React Three 
 3. モデルは Spline → glTF / GLB。描画は Three.js。React では R3F。embed は使わない。
 4. 合計 5MB 以下、テクスチャ最大 2K。ローディングと失敗時フォールバックを実装する。
 5. JS は `.cursor/rules/javascript.mdc` に従う（`const`/`let`、レキシカル環境、`js-` 接頭辞）。詳細仕様は [references/requirements.md](references/requirements.md)。
-6. 受け入れ条件を満たしたら完了とする。
+6. 実装は [three-review のチェックリスト](../three-review/references/checklist.md) の指摘にならない書き方で行う。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
+7. 受け入れ条件を満たしたら完了とする。
 
 3D 関連で HTML/CSS ルールと矛盾する場合は本スキルを優先する。実装方針は `AGENTS.md`。本スキルと矛盾する場合は本スキルを優先する。
 
 ## 参照
 
 - 要件定義: [references/requirements.md](references/requirements.md)
+- レビュー照合: [../three-review/references/checklist.md](../three-review/references/checklist.md)
