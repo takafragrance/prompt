@@ -14,6 +14,8 @@ alwaysApply: false
 - ローディングと失敗時フォールバック。装飾 canvas は `aria-hidden`。CTA はキーボード到達可。
 - フォールバック画像・リンクはルール `markup`。JS はルール `javascript`。
 
-各指摘は `ファイル:行` で修正箇所を明示し、git で教え、何がまずいか・どう直すかを書く。重大度は Critical / High / Medium / Low。
+各指摘は `ファイル:行` で修正箇所を明示し、何がまずいか・どう直すかを書く。重大度は Critical / High / Medium / Low。
+
+出力の最後に、直し方のある指摘を `text` コードブロック 1 つへまとめる。先頭は `以下の指摘をすべて修正してください。`。チャットのコピーボタンで全件を一度に取れるようにする。
 
 手順はスキル `three-review` を使う。静的 LP は `lp-review`、React アプリは `react-review`。
