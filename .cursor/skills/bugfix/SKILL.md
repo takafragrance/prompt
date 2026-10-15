@@ -18,10 +18,13 @@ description: Fixes bugs by reproducing the symptom, tracing root cause, grepping
 4. **最小差分で根因を直す**
    - 依頼範囲外のリファクタ、先回りの抽象化、新規依存はしない。
    - 境界での入力検証・データ喪失防止は削らない。
-5. **確認する**
+5. **レビューに引っかからない差分にする**
+   - 修正は、直す面のレビューチェックリストの指摘にならない書き方で行う。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
+   - React は [react-review](../react-review/references/checklist.md)、静的 LP は [lp-review](../lp-review/references/checklist.md)、3D は [three-review](../three-review/references/checklist.md)。
+6. **確認する**
    - 再現手順で直ったこと、兄弟呼び出しが壊れていないことを通す。
    - 非自明なロジックなら、壊れたら落ちる最小の自己確認を1つ残す（または同等を手元で実行する）。自明な一行修正は不要。
-6. **短く報告する**
+7. **短く報告する**
    - 根因は何か、どこを直したか、何を確認したか。
 
 ## やってはいけないこと
@@ -33,5 +36,6 @@ description: Fixes bugs by reproducing the symptom, tracing root cause, grepping
 ## 参照
 
 - 実装方針: ルートの `AGENTS.md`
-- React ならルール `react` / スキル `react-app`
-- 静的 LP ならルール `html-css` / `javascript`
+- React ならルール `react` / スキル `react-app`。照合は [../react-review/references/checklist.md](../react-review/references/checklist.md)
+- 静的 LP ならルール `html-css` / `javascript`。照合は [../lp-review/references/checklist.md](../lp-review/references/checklist.md)
+- 3D なら照合は [../three-review/references/checklist.md](../three-review/references/checklist.md)
