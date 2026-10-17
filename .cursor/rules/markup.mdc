@@ -1,6 +1,6 @@
 ---
 description: img / figure、a のラップ、fetchpriority、target=_blank の rel。HTML / JSX の画像・リンクのときに使う。
-globs: "**/*.{html,php,tsx,jsx}"
+globs: "**/*.html,**/*.php,**/*.tsx,**/*.jsx"
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: アクセシビリティ最低ライン。フォーカス、キーボード、名前付け、モーション。HTML / JSX / PHP の UI 実装のときに使う。
-globs: "**/*.{html,php,tsx,jsx}"
+globs: "**/*.html,**/*.php,**/*.tsx,**/*.jsx"
 alwaysApply: false
 ---
 

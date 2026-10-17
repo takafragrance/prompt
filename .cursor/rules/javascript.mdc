@@ -1,6 +1,6 @@
 ---
 description: org-top.js とページ JS。const/let、レキシカル環境、js- 接頭辞、インライン禁止、安全な DOM。
-globs: "**/*.{js,jsx,mjs,cjs,ts,tsx}"
+globs: "**/*.js,**/*.jsx,**/*.mjs,**/*.cjs,**/*.ts,**/*.tsx"
 alwaysApply: false
 ---
 
