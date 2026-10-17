@@ -29,6 +29,7 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 - 各指摘に重要度 **Critical / High / Medium / Low** を付ける。
 - 各指摘は次の 3 点セットにする: **Issue**（指摘）/ **Reason**（理由）/ **Actionable Advice**（具体的改善案）。
 - 修正箇所を `ファイル:行` で明示し、どう直すかを書く。本文中の個別指摘はコードブロックにしない。
+- 各指摘に修正箇所の GitHub URL を付ける。対象リポジトリの `git remote get-url origin`（末尾 `.git` を除く）と `git rev-parse --abbrev-ref HEAD`、リポジトリルートからの相対パスで組む。形式は `{origin}/blob/{ブランチ}/{相対パス}#L{行}`。範囲は `#L{開始}-L{終了}`。origin が無い、未追跡、未 push で開けないときは URL を作らず `リモート URL なし` と書く。
 - 出力は次の Markdown 構成に固定する（該当なしの節は「問題なし」と一行）。
 
 ### 出力テンプレート
@@ -50,7 +51,7 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 
 4. **指摘一覧**（表）
 
-| 重要度 | カテゴリ | Issue | Reason | Actionable Advice | 根拠（ファイル:行 または評価不能） |
+| 重要度 | カテゴリ | Issue | Reason | Actionable Advice | 根拠（ファイル:行 / URL または評価不能） |
 | --- | --- | --- | --- | --- | --- |
 
 5. カテゴリごとの補足が必要なら短く箇条書き（任意）
@@ -64,10 +65,12 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 以下の指摘をすべて修正してください。
 
 1. [High] index.php:24
+URL: https://github.com/takafragrance/-------/blob/main/index.php#L24
 問題: メイン画像の alt が空
 修正: 画像の内容が分かる alt を付ける
 
 2. [Medium] style.css:80
+URL: https://github.com/takafragrance/-------/blob/main/style.css#L80
 問題: ネガティブマージンを使っている
 修正: 余白は padding か gap で取る
 ````

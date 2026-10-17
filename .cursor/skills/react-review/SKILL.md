@@ -36,6 +36,8 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 
 各指摘は `ファイル:行` で修正箇所を明示し、何がまずいか・どう直すかを書く。重大度は 必須 / 推奨 / 任意。本文中の個別指摘はコードブロックにしない。
 
+各指摘に修正箇所の GitHub URL を付ける。対象リポジトリの `git remote get-url origin`（末尾 `.git` を除く）と `git rev-parse --abbrev-ref HEAD`、リポジトリルートからの相対パスで組む。形式は `{origin}/blob/{ブランチ}/{相対パス}#L{行}`。範囲は `#L{開始}-L{終了}`。origin が無い、未追跡、未 push で開けないときは URL を作らず `リモート URL なし` と書く。
+
 指摘のあとに **修正指示（一括コピー）** を必ず置く。直し方のある指摘を、次の `text` コードブロック **1 つだけ** にまとめる。チャットのコピーボタンで全件を一度に取れるようにする。表や複数ブロックへ分けない。評価不能で直し方がない項目と「問題なし」は入れない。0 件なら中身は `修正なし` の一行。
 
 ブロックの先頭は `以下の指摘をすべて修正してください。`。各件は空行で区切り、指摘本文と同じ順・同じ件数にする。
@@ -44,10 +46,12 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 以下の指摘をすべて修正してください。
 
 1. [必須] src/App.tsx:12
+URL: https://github.com/takafragrance/my-react-app/blob/main/src/App.tsx#L12
 問題: 依存配列が不足している
 修正: useEffect の依存に userId を足す
 
 2. [推奨] src/List.tsx:40
+URL: https://github.com/takafragrance/my-react-app/blob/main/src/List.tsx#L40
 問題: key に index を使っている
 修正: 安定した id を key にする
 ````
