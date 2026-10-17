@@ -8,20 +8,34 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 ## 1. 対象とファイル構成
 
-既存の Vite 構成に合わせる。典型例:
+既存の Vite 構成に合わせる。次の2種類があり、無いファイルは作らない。
+
+### 単一プロダクト（nomitomo、expenditure）
+
+`src/main.tsx` が `src/<feature>/` をマウントする。画面・ルート・データはそのフォルダ内。`App.tsx`、`src/components/`、`src/routes.js` は作らない。
+
+| 種別 | パス |
+| --- | --- |
+| エントリ | `src/main.tsx` |
+| 機能 | `src/<feature>/`（画面、`<Routes>`、データ） |
+| スタイル | Tailwind（`className`）。エントリで `@import "tailwindcss"` |
+
+### 複数アプリの置き場（my-react-app）
+
+`src/App.tsx`、`src/components/`、`src/routes.js` の `KNOWN_PATHS` を使う。ルートを足すときは、`src/routes.js` が既にあるときだけ `KNOWN_PATHS` も更新する。
 
 | 種別 | パス |
 | --- | --- |
 | エントリ | `src/main.tsx` |
 | ルート UI | `src/App.tsx` |
 | 共通部品 | `src/components/` |
-| 機能単位 | `src/<feature>/`（既存フォルダがある場合） |
+| 機能単位 | `src/<feature>/` |
 | スタイル | Tailwind（`className`）。エントリで `@import "tailwindcss"` |
 | ルート表 | `src/routes.js` |
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
 - React の UI（エントリ、画面、コンポーネント）は `.tsx`。`.jsx` は新規に作らない。依頼で触る `.jsx` は同じ変更の中で `.tsx` にする。
-- 画像はプロジェクト既存の置き場（`src/assets/` や `public/`）に合わせる。
+- 画像は機能フォルダの `images/` に置く（`src/<feature>/images/`）。`assets/` や `public/` には置かない。
 
 ### 画像・リンクマークアップ
 
@@ -58,6 +72,7 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 ## 2. コンポーネント
 
 - 関数コンポーネント + Hooks のみ。クラスコンポーネントは使わない。
+- 条件が重なるときは早期リターンでネストを浅くする。
 - 名前付き export（`export const Foo = ...`）。ページルートの `App` など既存が default export ならそれに合わせる。
 - props は分割代入で受け取る。ファイル内に `type Props` を置く。共通型ファイルは依頼がない限り作らない。
 - 表示専用と入力専用を無理に分けない。リスト行だけが肥大化したら `FooItem` を足す。
@@ -122,7 +137,7 @@ useEffect(() => {
 ## 5. ルーティング
 
 - ルータは既存の `react-router-dom` のみ。
-- ページを足す／パスを変えるときは `src/routes.js` の `KNOWN_PATHS` も更新する。
+- ページを足す／パスを変えるとき、`src/routes.js` が既にあるプロジェクトだけ `KNOWN_PATHS` も更新する。単一プロダクトは機能フォルダ内の `<Routes>` を更新する。
 - 同じ state を複数ルートが表示するなら、持ち上げ先を変えずに両方の画面を確認する。
 
 ---
