@@ -29,6 +29,7 @@ description: Reviews 3D landing pages for purpose, fallbacks, asset size limits,
 - 各指摘に重要度 **Critical / High / Medium / Low**。
 - 各指摘は **Issue / Reason / Actionable Advice**。
 - 修正箇所を `ファイル:行` で明示し、直し方を書く。本文中の個別指摘はコードブロックにしない。
+- 各指摘に修正箇所の GitHub URL を付ける。対象リポジトリの `git remote get-url origin`（末尾 `.git` を除く）と `git rev-parse --abbrev-ref HEAD`、リポジトリルートからの相対パスで組む。形式は `{origin}/blob/{ブランチ}/{相対パス}#L{行}`。範囲は `#L{開始}-L{終了}`。origin が無い、未追跡、未 push で開けないときは URL を作らず `リモート URL なし` と書く。
 
 ### 出力テンプレート
 
@@ -49,7 +50,7 @@ description: Reviews 3D landing pages for purpose, fallbacks, asset size limits,
 
 4. **指摘一覧**（表）
 
-| 重要度 | カテゴリ | Issue | Reason | Actionable Advice | 根拠（ファイル:行 または評価不能） |
+| 重要度 | カテゴリ | Issue | Reason | Actionable Advice | 根拠（ファイル:行 / URL または評価不能） |
 | --- | --- | --- | --- | --- | --- |
 
 5. **修正指示（一括コピー）** — 必ず最後に置く
@@ -62,10 +63,12 @@ description: Reviews 3D landing pages for purpose, fallbacks, asset size limits,
 以下の指摘をすべて修正してください。
 
 1. [High] src/Hero.tsx:18
+URL: https://github.com/takafragrance/my-react-app/blob/main/src/Hero.tsx#L18
 問題: WebGL 失敗時の静止画がない
 修正: 読み込み失敗で img のフォールバックを出す
 
 2. [Medium] src/Scene.tsx:40
+URL: https://github.com/takafragrance/my-react-app/blob/main/src/Scene.tsx#L40
 問題: 装飾 canvas に名前が付いている
 修正: canvas を aria-hidden にする
 ````
