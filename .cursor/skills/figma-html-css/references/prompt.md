@@ -13,7 +13,7 @@
 | footer | `footer.php` |
 | CSS | `style.css` |
 | JavaScript | `org-top.js` |
-| 画像資産 | すべて `images/` フォルダ内に保存・参照する |
+| 画像資産 | すべて `images/` に **WebP** で保存・参照する（例外は SVG / 必要な PNG）。形式の正本はルール `markup` |
 
 - `header.php` と `footer.php` は必ず個別ファイルにする。`index.php` に `<header>` / `<footer>` を直書きしない。
 - メイン（`index.php`）では `render()` で読み込む。定義が無いプロジェクトだけ、`index.php` 先頭に置く。
