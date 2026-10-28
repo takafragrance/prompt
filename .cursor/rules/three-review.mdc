@@ -7,15 +7,11 @@ alwaysApply: false
 
 実装ではなく指摘。依頼があるまでコードを変えない。
 
-- 読む前に宣言する: `レビュ〜〜〜〜やるぅぅ〜〜`（言い換え禁止）
 - 3D の目的一文と「2D では不足する点」があるか。「かっこいいから」だけの採用を指摘する。
 - 必須: WebGL 不可・古い端末・`prefers-reduced-motion` のフォールバック（静止画優先）。情報 HTML は残るか。技術エラー文言は出ていないか。
-- 容量: 3D 合計 5MB 以下、テクスチャ最大 2K。Spline embed 禁止。React なら R3F（imperative 直書き禁止）。
+- 容量: 3D 合計 5MB 以下、テクスチャ最大 2K。Spline embed 禁止。React なら R3F（imperative 直書き禁止）。React の起動は `src/main.tsx`。
 - ローディングと失敗時フォールバック。装飾 canvas は `aria-hidden`。CTA はキーボード到達可。
 - フォールバック画像・リンクはルール `markup`。JS はルール `javascript`。
+- 重大度は Critical / High / Medium / Low。
 
-各指摘は `ファイル:行` と GitHub URL（`{origin}/blob/{ブランチ}/{相対パス}#L{行}`）で修正箇所を明示し、何がまずいか・どう直すかを書く。重大度は Critical / High / Medium / Low。URL が作れないときは `リモート URL なし`。
-
-出力の最後に、直し方のある指摘を `text` コードブロック 1 つへまとめる。先頭は `以下の指摘をすべて修正してください。`。チャットのコピーボタンで全件を一度に取れるようにする。
-
-手順はスキル `three-review` を使う。静的 LP は `lp-review`、React アプリは `react-review`。
+宣言、GitHub URL、末尾の text ブロックはスキル `three-review`。静的 LP は `lp-review`、React アプリは `react-review`。

@@ -12,7 +12,7 @@ Figma 静的 LP（`figma-html-css`）でも CRUD 画面（`react-app`）でも�
 1. 既存の `src/<feature>-landing/`（または同等）とルート表を読む。Figma / キャプチャ / 指示があればそれを正とする。
 2. レイアウトとヒーロー制約は [references/design.md](references/design.md) に従う。コンポーネント規約の土台は `react-app` の `implementation.md`（`.tsx`、Tailwind、ルーティング）。
 3. 画像・リンクはルール `markup`。a11y はルール `a11y`。JS はルール `javascript`。
-4. 実装方針は `AGENTS.md`。矛盾する場合は本スキルと `.cursor/rules/react-landing.mdc` を優先する。
+4. 優先順位はルール `core`。
 5. 3D が中核なら `three-landing` に委ね、本スキルは HTML／2D 周りだけ担う。
 6. 実装は [react-review のチェックリスト](../react-review/references/checklist.md) の指摘にならない書き方で行う。ヒーロー制約は [references/design.md](references/design.md) のまま。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
 7. PC / SP と主 CTA を通し、何をなぜ変えたか短く報告する。

@@ -17,7 +17,7 @@ description: Implements immersive 3D landing pages with Three.js or React Three 
 6. 実装は [three-review のチェックリスト](../three-review/references/checklist.md) の指摘にならない書き方で行う。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
 7. 受け入れ条件を満たしたら完了とする。
 
-3D 関連で HTML/CSS ルールと矛盾する場合は本スキルを優先する。実装方針は `AGENTS.md`。本スキルと矛盾する場合は本スキルを優先する。
+優先順位はルール `core`。
 
 ## 参照
 

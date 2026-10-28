@@ -17,7 +17,7 @@
 
 詳細仕様:
 
-- Figma 実装仕様: [figma-html-css/references/prompt.md](.cursor/skills/figma-html-css/references/prompt.md)
+- Figma 実装仕様: [figma-html-css/references/spec.md](.cursor/skills/figma-html-css/references/spec.md)
 - 静的 LP 要件定義: [figma-html-css/references/requirements.md](.cursor/skills/figma-html-css/references/requirements.md)
 - 3D LP 要件定義: [three-landing/references/requirements.md](.cursor/skills/three-landing/references/requirements.md)
 - React アプリ実装: [react-app/references/implementation.md](.cursor/skills/react-app/references/implementation.md)

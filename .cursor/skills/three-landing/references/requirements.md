@@ -1,6 +1,6 @@
 # 要件定義：3D ランディングページ
 
-実装方針は `AGENTS.md`（ponytail）に従う。本ファイルと矛盾する場合は **本ファイルを優先**する。
+優先順位はルール `core`。
 
 ---
 
@@ -56,7 +56,7 @@
 
 - 3D（WebGL）が読み込めない
 - 非対応の古いブラウザ・端末
-- （推奨）`prefers-reduced-motion: reduce`
+- `prefers-reduced-motion: reduce`（必須。装飾アニメを出さず静止画へフォールバックする）
 
 代替手段（優先順を決めて明記する）:
 
@@ -137,11 +137,11 @@
 
 ### 4.3 外部ファイルへの集約（インライン禁止）
 
-- HTML 内へのインライン `<script>` は禁止する。処理はすべて `org-top.js`（またはプロジェクトで指定した JS / モジュール）に集約する。
-- React プロジェクトでは、ページ初期化・DOM インタラクションを `org-top.js` 等のモジュールに置き、コンポーネントから呼び出す。
-- React プロジェクトの 3D シーンは **React Three Fiber（R3F）** で記述する（`Canvas` / 宣言的なメッシュ・マテリアル等）。imperative な Three.js 初期化を React 側に直書きしない。
+- 静的 LP では HTML 内へのインライン `<script>` は禁止する。処理は `org-top.js`（またはプロジェクトで指定した JS / モジュール）に集約する。
+- React の起動は `src/main.tsx`。ページ初期化を `org-top.js` に置かない。
+- React の 3D シーンは **React Three Fiber（R3F）** で記述する（`Canvas` / 宣言的なメッシュ・マテリアル等）。imperative な Three.js 初期化を React 側に直書きしない。
 - HTML 要素へのインラインイベントハンドラ（`onclick=""` / `onload=""` など）は禁止する。
-- イベントは JavaScript 側で `addEventListener` を用いて設定する（React の合成イベント・R3F のイベントは可）。
+- 静的 LP のイベントは `addEventListener`。React の合成イベントと R3F のイベントは可。
 
 ---
 
@@ -172,7 +172,7 @@
 - CTA・主要導線が利用できる
 - 対象デバイスの縦／横で致命的なレイアウト崩れがない
 
-### 5.3 アクセシビリティ（推奨必須）
+### 5.3 アクセシビリティ
 
 - 3D キャンバスは装飾の場合 `aria-hidden` 等で扱い、情報は HTML 側に置く
 - キーボードで主要 CTA・ナビに到達できること
@@ -213,8 +213,8 @@
 
 1. 3D を使う目的とターゲット（リテラシー・デバイス）が定義どおりである
 2. 定義したインタラクションが動作する
-3. 非対応時に静止画または動画のフォールバックが表示される
+3. WebGL 不可・古い端末・`prefers-reduced-motion: reduce` では静止画（必要なら動画）のフォールバックが表示される
 4. モデルは Spline で制作し、描画は Three.js で行う（React 利用時は R3F で記述する）
 5. 3D ファイル合計 5MB 以下、テクスチャ最大 2K を守る
 6. ローディング仕様が実装され、必須ブラウザ・端末で閲覧できる
-7. JS は `const`/`let`・レキシカル環境・`js-` 接頭辞・モジュール化・2スペースインデント・クラス付け外し・`addEventListener` 方針に従う
+7. 静的 LP の JS は `org-top.js` に集約し、`const`/`let`・レキシカル環境・`js-`・`addEventListener` に従う。React の起動は `src/main.tsx`、3D は R3F、イベントは合成イベント

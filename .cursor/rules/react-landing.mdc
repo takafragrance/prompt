@@ -1,6 +1,6 @@
 ---
 description: React ブランド LP。ヒーロー制約、Tailwind、ブランド先行。React LP、ブランドページ、fashion/house/tobacco landing のときに使う。
-globs: "**/*landing*/*.tsx,**/*landing*/*.jsx,**/*landing*/*.css,**/*landing*/**/*.tsx,**/*landing*/**/*.jsx,**/*landing*/**/*.css,**/immersive/*.tsx,**/immersive/*.jsx,**/immersive/*.css,**/immersive/**/*.tsx,**/immersive/**/*.jsx,**/immersive/**/*.css"
+globs: "**/*landing*/**/*.tsx,**/*landing*/**/*.jsx,**/*landing*/**/*.css,**/immersive/**/*.tsx,**/immersive/**/*.jsx,**/immersive/**/*.css"
 alwaysApply: false
 ---
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 静的 PHP/BEM（`figma-html-css`）ではなく、Vite + React + Tailwind のブランド／LP 画面向け。
 
-- 既存の Vite + React 構成。見た目は Tailwind。ネガティブマージンとインライン `style` は禁止（ルール `react`）。
+- 既存の Vite + React 構成。見た目は Tailwind。インライン `style` は禁止（ルール `react`）。ネガティブマージンはルール `core`。
 - ファーストビューは **1 つの構図**。ブランドがヒーロー級。ナビを外しても他社ページに見えないこと。
 - ヒーロー予算: ブランド、見出し 1、短い補足 1、CTA 群 1、支配的な画像 1。統計・予定・住所・浮遊バッジを載せない。
 - ヒーロー画像はフルブリード（inset カード・横パネル・コラージュにしない）。ヒーロー上に切り離しバッジを載せない。
