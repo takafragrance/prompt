@@ -1,6 +1,6 @@
 ---
 name: react-review
-description: Reviews React code for extra code, clarity, vulnerabilities, Hooks, state placement, component boundaries, performance, and TypeScript safety. Use when the user asks for a React review, コードレビュー, レビュー, or Reactレビュー.
+description: Reviews React code for extra code, clarity, vulnerabilities, Hooks, state placement, component boundaries, performance, and TypeScript safety. Use when the user asks for a React review, Reactレビュー, or a review of .tsx Hooks and components.
 ---
 
 # React レビュー
@@ -17,7 +17,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 
 2. 対象の `src/` と差分を読む。呼び出し元まで辿る。
 3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像・リンクはルール `markup` も照合する。
-4. 実装方針はルートの `AGENTS.md`（ponytail）。矛盾する場合は本スキルと `.cursor/rules/react-review.mdc` を優先する。
+4. 優先順位はルール `core`。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
 ## 出力
@@ -32,9 +32,11 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 - 4. パフォーマンスの最適化
 - 5. 型安全と堅牢性（`.tsx`。Props の型、`any` / `as`）
 - 6. 画像・リンクマークアップ（ルール `markup`）
-- 7. CSS 規約（Tailwind、ネガティブマージン禁止、インライン `style` 禁止）
+- 7. CSS 規約（Tailwind、インライン `style` 禁止、ネガティブマージンはルール `core`）
+- 8. アクセシビリティ（ルール `a11y`）
+- 9. ヒーロー（ブランド LP のとき。スキル `react-landing` の `references/design.md`。CRUD 画面なら「対象外」と一行）
 
-各指摘は `ファイル:行` で修正箇所を明示し、何がまずいか・どう直すかを書く。重大度は 必須 / 推奨 / 任意。本文中の個別指摘はコードブロックにしない。
+各指摘は `ファイル:行` で修正箇所を明示し、何がまずいか・どう直すかを書く。重大度は Critical / High / Medium / Low。本文中の個別指摘はコードブロックにしない。
 
 各指摘に修正箇所の GitHub URL を付ける。対象リポジトリの `git remote get-url origin`（末尾 `.git` を除く）と `git rev-parse --abbrev-ref HEAD`、リポジトリルートからの相対パスで組む。形式は `{origin}/blob/{ブランチ}/{相対パス}#L{行}`。範囲は `#L{開始}-L{終了}`。origin が無い、未追跡、未 push で開けないときは URL を作らず `リモート URL なし` と書く。
 
@@ -45,12 +47,12 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 ````text
 以下の指摘をすべて修正してください。
 
-1. [必須] src/App.tsx:12
+1. [Critical] src/App.tsx:12
 URL: https://github.com/takafragrance/my-react-app/blob/main/src/App.tsx#L12
 問題: 依存配列が不足している
 修正: useEffect の依存に userId を足す
 
-2. [推奨] src/List.tsx:40
+2. [High] src/List.tsx:40
 URL: https://github.com/takafragrance/my-react-app/blob/main/src/List.tsx#L40
 問題: key に index を使っている
 修正: 安定した id を key にする

@@ -15,9 +15,9 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 
 レビュ〜〜〜〜やるぅぅ〜〜
 
-2. ターゲットユーザーと最終目的（CTA）を固定する。ユーザー指定がなければ [figma-html-css/references/requirements.md](../figma-html-css/references/requirements.md) の案件定義を使い、それでも不明なら確認する。その視点で障壁を探す。
+2. ターゲットユーザーと最終目的（CTA）を固定する。ユーザー指定がなければ確認する。未指定のままサンプル案件 NORI の要件で採点しない。固定した視点で障壁を探す。
 3. 対象の HTML / CSS / JS（および渡された URL・テキスト）を読む。チェックリストは [references/checklist.md](references/checklist.md) に従う。
-4. 実装仕様との照合は `figma-html-css` の `prompt.md` / `requirements.md`、ルール `html-css` / `javascript` / `markup`。矛盾する場合は本スキルと `.cursor/rules/lp-review.mdc` を優先する。
+4. 実装仕様との照合は `figma-html-css` の `spec.md` / `requirements.md`、ルール `html-css` / `javascript` / `markup` / `a11y`。優先順位はルール `core`。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
 ## 出力ルール
@@ -79,4 +79,4 @@ URL: https://github.com/takafragrance/-------/blob/main/style.css#L80
 
 - チェックリスト: [references/checklist.md](references/checklist.md)
 - 静的 LP 要件: [../figma-html-css/references/requirements.md](../figma-html-css/references/requirements.md)
-- 実装仕様: [../figma-html-css/references/prompt.md](../figma-html-css/references/prompt.md)
+- 実装仕様: [../figma-html-css/references/spec.md](../figma-html-css/references/spec.md)

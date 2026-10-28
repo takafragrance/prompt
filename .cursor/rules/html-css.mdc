@@ -1,44 +1,25 @@
 ---
 description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。index.php / style.css の LP のときに使う。
-globs: "**/*.html,**/*.php,**/style.css"
+globs: "**/*.html,**/index.php,**/header.php,**/footer.php,**/style.css"
 alwaysApply: false
 ---
 
 # HTML / CSS
 
 - ファイル: `index.php` / `header.php` / `footer.php` / `style.css` / `org-top.js` / 画像は `images/`。header と footer は個別ファイルにし、`index.php` に直書きしない。クラス要件は守る。
-- `index.php` では `render()` で読み込む。定義が無いときだけ、ファイル先頭に次を置く。
-
-```php
-<?php
-if (!function_exists('render')) {
-    function render(string $file): void
-    {
-        include __DIR__ . '/' . $file;
-    }
-}
-?>
-```
-
-```php
-<?php render('header.php'); ?>
-<?php render('footer.php'); ?>
-```
-
-- サイト制作（新規 LP / `index.php` の骨格）の起点は Cursor User スニペット `php.json`（`~/Library/Application Support/Cursor/User/snippets/php.json`）。展開は当該ファイルの `prefix` に従う。`html.json` は使わない。エージェントは新規ページ作成時、このスニペットと同等の AIO/LLMO 骨格（定義ブロック・見出し階層・FAQ・JSON-LD・会社情報）を出す。`<header>` と `<footer>` の中身は `header.php` / `footer.php` に書き、`index.php` は `render()` 呼び出しにする。
+- `index.php` では `render()` で読み込む。定義と呼び出しの全文はスキル `figma-html-css` の `references/spec.md`。定義が無いときだけ `index.php` 先頭に置く。
 - 依頼が header / footer に触れない既存改修では、分割のためだけに既存の header / footer を動かさない。
+- 新規 LP の骨格は、User スニペット `php.json` と同等の AIO/LLMO（定義ブロック・見出し階層・FAQ・JSON-LD・会社情報）にする。`html.json` は使わない。`<header>` と `<footer>` の中身は `header.php` / `footer.php` に書き、`index.php` は `render()` にする。
 - `:root` で `--main-color`、`--accent-color`、`--section-padding`、インナー幅を管理する。PC `1140px`、スマホ `89.3333vw`。
 - `.section__inner`（または同等）は上記幅、`margin: 0 auto`。
 - BEM: `Block__Element--modifier`。セクションは `section__wrapper--*` / `section__inner--*`。
 - JS から操作する対象には `js-` 接頭辞（例: `js-menu`）。詳細はルール `javascript`（`const`/`let`・レキシカル環境も同ルール）。
 - MQ は `@media (width <= 768px)`。SP のサイズは `vw`。
-- ネガティブマージン（`margin` の負値）は使用しない。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
 - HTML/CSS インデントは 4 スペース。
-- 共通 CSS は `[class*=""]` を使い、header / footer / section ごとに分ける。
+- 共通 CSS は `[class*="section__inner"]` のように、含む文字列を指定した属性セレクタを使う。`[class*=""]` は使わない。header / footer / section ごとに分ける。
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
 - `<img>` / `<a>` / `target`・`rel` はルール `markup` に従う。
 - フォーカス・キーボード・名前付けはルール `a11y` に従う。
-- 読み込んで実装する前に宣言する: `AIコーディングはっじめるよぉぉぉぉ〜〜〜〜`（言い換え禁止）
 - Figma / キャプチャ / 指示が正。独自デザインや不要機能を足さない。
 - 案件の目的・ページ構成・AIO/LLMO（定義ブロック、見出し、FAQ、JSON-LD）はスキル `figma-html-css` の `requirements.md`。
 

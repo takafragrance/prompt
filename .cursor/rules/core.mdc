@@ -5,26 +5,38 @@ alwaysApply: true
 
 # 優先順位
 
-1. `.cursor/rules/` および該当スキル（Figma は A、3D LP は B、React アプリは C、React レビューは D、LP レビューは E、3D レビューは F、bugfix は G、React LP は H）
-2. `AGENTS.md`（ponytail）
-3. 推測や独自のデザイン改変
+タスクの種類が重なったら、この表のスキルを正にする。
 
-矛盾する場合の優先:
-
-- 3D 関連 → B（スキル `three-landing`）
-- Figma HTML/CSS LP → A（スキル `figma-html-css`）
-- React レビュー → D（スキル `react-review`）
-- LP レビュー → E（スキル `lp-review`）
-- 3D レビュー → F（スキル `three-review`）
-- バグ修正 → G（スキル `bugfix`）
-- React LP（ブランド／ヒーロー）→ H（スキル `react-landing`）
-- React アプリ（画面・状態・フォーム・ルーティング）→ C（スキル `react-app`）
+| タスク | 正本 |
+| --- | --- |
+| Figma / 静的 HTML・CSS LP | スキル `figma-html-css` |
+| 静的 LP の中身（目的・構成・AIO/LLMO） | `figma-html-css` の `references/requirements.md` |
+| 静的 LP の書き方（マークアップ・CSS・JS） | `figma-html-css` の `references/spec.md` |
+| React アプリ（画面・状態・フォーム・ルーティング） | スキル `react-app` |
+| React LP（ブランド／ヒーロー） | スキル `react-landing` |
+| 3D LP | スキル `three-landing` |
+| バグ修正 | スキル `bugfix` |
+| React レビュー | スキル `react-review` |
+| 静的 LP レビュー | スキル `lp-review` |
+| 3D レビュー | スキル `three-review` |
 
 共通マークアップ・JS・a11y（スキル横断）:
 
 - 画像・リンク（`img` / `figure` / `a` / `target`・`rel`）→ ルール `markup`
 - JS（`const`/`let`・レキシカル環境・`js-`）→ ルール `javascript`
 - フォーカス・キーボード・名前付け・モーション → ルール `a11y`
+
+適用の順:
+
+1. 上の表と `.cursor/rules/`
+2. `AGENTS.md`（ponytail）
+3. 推測でデザインや機能を足さない
+
+静的 LP で中身と書き方が食い違ったら、中身は `requirements.md`、書き方は `spec.md`。
+
+# レイアウト
+
+ネガティブマージン（`margin` の負値、Tailwind の `-m-*` / `-mt-*` 等）は使わない。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
 
 # 出力範囲
 

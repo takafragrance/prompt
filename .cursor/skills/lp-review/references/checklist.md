@@ -104,8 +104,8 @@
 - header / footer が `header.php` / `footer.php` に分かれ、メインから `render()` で読み込まれているか。`index.php` への直書きは指摘。
 - クラスが BEM（`Block__Element--modifier`）に従っているか。
 - セクションは `section__wrapper--*` / `section__inner--*`（または同等）か。
-- 共通スタイルは `[class*=""]` 等でまとめ、header / footer / section ごとに分けているか。サイト全体への無差別共通化は指摘。
-- ネガティブマージン（`margin` の負値。例: `margin-top: -16px`）を使っていないか。位置調整は Flexbox / Grid / `transform` / 正の余白で行う。
+- 共通スタイルは `[class*="section__inner"]` のように、含む文字列を指定した属性セレクタでまとめ、header / footer / section ごとに分けているか。`[class*=""]` は指摘。サイト全体への無差別共通化は指摘。
+- ネガティブマージン（ルール `core`）を使っていないか。
 - JS から見た目を操作する対象は、クラス名の先頭を **`js-`** にする（例: `js-menu`、`js-faq-trigger`）。スタイリング専用クラスと混同していないか。
 
 ### JavaScript
@@ -114,7 +114,7 @@
 - IIFE または ES Modules など、レキシカル環境内で書きグローバルを汚していないか。
 - インライン `<script>` / インラインイベント禁止。`addEventListener`。
 - `innerHTML` でマークアップ組み立てていないか。DOM は存在確認。
-- 見た目は CSS クラスの付け外し。詳細はルール `javascript` / `prompt.md`。
+- 見た目は CSS クラスの付け外し。詳細はルール `javascript` / `spec.md`。
 
 ---
 
