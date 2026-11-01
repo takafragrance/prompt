@@ -12,7 +12,7 @@ description: Implements immersive 3D landing pages with Three.js or React Three 
 1. 目的と「2D では不足する点」を一文で残す。
 2. 挙動を必須 / 任意に分ける。フォールバック（静止画 → 動画）を必ず入れる。静止画・リンクはルール `markup` に従う。
 3. モデルは Spline → glTF / GLB。描画は Three.js。React では R3F。embed は使わない。
-4. 合計 5MB 以下、テクスチャ最大 2K。ローディングと失敗時フォールバックを実装する。
+4. 合計 5MB 以下、テクスチャ最大 2K。ローディングの有無を定義する（重いアセットでは有）。失敗時は止めてフォールバックする。
 5. JS は `.cursor/rules/javascript.mdc` に従う（`const`/`let`、レキシカル環境、`js-` 接頭辞）。詳細仕様は [references/requirements.md](references/requirements.md)。
 6. 実装は [three-review のチェックリスト](../three-review/references/checklist.md) の指摘にならない書き方で行う。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
 7. 受け入れ条件を満たしたら完了とする。
