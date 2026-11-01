@@ -75,6 +75,7 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 - 条件が重なるときは早期リターンでネストを浅くする。
 - 名前付き export（`export const Foo = ...`）。ページルートの `App` など既存が default export ならそれに合わせる。
 - props は分割代入で受け取る。ファイル内に `type Props` を置く。共通型ファイルは依頼がない限り作らない。
+- 子には、その子が使う props だけ渡す。
 - 表示専用と入力専用を無理に分けない。リスト行だけが肥大化したら `FooItem` を足す。
 
 ```tsx
@@ -95,6 +96,7 @@ export const ExpenseItem = ({ title, amount }: Props) => {
 
 - リストは `key={item.id}`。`id` が無いときだけ index。新規行の id は `crypto.randomUUID()`。
 - イベントは React の合成イベント（`onClick` / `onSubmit`）。DOM の `onclick` 属性と `addEventListener` 直書きは使わない。
+- state にも props にも依存しない定数・純粋関数は、コンポーネントの外に置く。
 
 ---
 
@@ -122,6 +124,9 @@ useEffect(() => {
 ```
 
 - `localStorage` / `JSON.parse` は `try/catch`。壊れたデータでも初期値に戻し、白画面にしない。
+- 描画に渡す値は描画前に検証する。例外で画面全体を落とさない。境界は既にあるときだけ使う。
+- ループの中で 1 件ずつ `setState` しない。配列は外で作って一度だけ渡す。
+- `console.log` とコメントアウトは残さない。失敗時の `console.error` は残してよい。
 
 ---
 
@@ -171,7 +176,7 @@ export const ExpenseForm = ({ onAdd }) => {
 - グローバル汚染を避ける（モジュールのレキシカル環境内で書く）。
 - DOM をクラス名で掴む場合は先頭を **`js-`** にする（例: `js-menu`）。合成イベントだけで足りる場合は不要。
 - `innerHTML` でマークアップを組まない。
-- `any` を増やさない。外部入力（`JSON.parse`、API、`localStorage`）は形を確認してから使う。
+- `any` を増やさない。根拠のない `as` と `!` も増やさない。外部入力（`JSON.parse`、API、`localStorage`）は形を確認してから使う。
 - 依存追加（状態管理、UI ライブラリ、フォームライブラリ）は依頼がない限り行わない。`tailwindcss` / `@tailwindcss/vite` はスタイルの前提として未導入なら入れてよい。入っているもの（`react-hook-form` 等）は、その画面が既に使っているときだけ使う。
 
 ---

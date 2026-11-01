@@ -16,7 +16,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 レビュ〜〜〜〜やるぅぅ〜〜
 
 2. 対象の `src/` と差分を読む。呼び出し元まで辿る。
-3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像・リンクはルール `markup` も照合する。
+3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像・リンクはルール `markup`、JS はルール `javascript` も照合する。
 4. 優先順位はルール `core`。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
