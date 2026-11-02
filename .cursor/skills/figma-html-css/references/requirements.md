@@ -17,7 +17,7 @@
 | サイト名 | NORI（ノリ） |
 | 業種 | 中小企業向け業務効率化 SaaS |
 | ページ種別 | 1 ページ完結の静的 LP（関連コンテンツへの導線は 7 章） |
-| 技術前提 | Figma → `index.php` / `header.php` / `footer.php` / `style.css` / `org-top.js` / `images/`。header と footer は `index.php` から `render()` で読み込む（ルール `html-css`） |
+| 技術前提 | Figma → `index.php` / `header.php` / `footer.php` / `header.css` / `footer.css` / `top.css` / `org-top.js` / `images/`。header と footer は `index.php` から `render()` で読み込む。CSS は header / footer / ページ本体でファイルを分ける（ルール `html-css`） |
 
 ### 1.2 目的
 

@@ -16,7 +16,7 @@ Figma（またはキャプチャ・指示文）を正としてコーディング
 AIコーディングはっじめるよぉぉぉぉ〜〜〜〜
 
 4. 既存の HTML / CSS / JS とクラス命名・ディレクトリを確認する。
-5. ファイル構成とマークアップは [references/spec.md](references/spec.md) に従う。画像・リンクはルール `markup`。
+5. ファイル構成とマークアップは [references/spec.md](references/spec.md) に従う。CSS は 1 本にまとめず、`header.css`（header）・`footer.css`（footer）・`top.css`（ページ本体と `:root`）に分けて書く。`<head>` ではこの順で読み込む。依頼が CSS の分割に触れない既存改修では、分割のためだけに `style.css` を動かさない。画像・リンクはルール `markup`。
 6. 優先順位はルール `core`。
 7. JS は `org-top.js` に集約する。ルール `javascript` を守る（`const`/`let`、レキシカル環境、`js-` 接頭辞）。
 8. 実装は [lp-review のチェックリスト](../lp-review/references/checklist.md) の指摘にならない書き方で行う。完了前に照合し、引っかかる箇所は直してから終える。チェックリスト本文はここに写さない。
