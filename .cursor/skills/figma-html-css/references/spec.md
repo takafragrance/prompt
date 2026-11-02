@@ -11,7 +11,9 @@
 | HTML（メイン） | `index.php` |
 | header | `header.php` |
 | footer | `footer.php` |
-| CSS | `style.css` |
+| CSS（header） | `header.css` |
+| CSS（footer） | `footer.css` |
+| CSS（ページ本体） | `top.css` |
 | JavaScript | `org-top.js` |
 | 画像資産 | すべて `images/` に **WebP** で保存・参照する（例外は SVG / 必要な PNG）。形式の正本はルール `markup` |
 
@@ -34,6 +36,24 @@ if (!function_exists('render')) {
 <?php render('footer.php'); ?>
 ```
 
+- CSS は次の 3 ファイルに分けて書く。新規で `style.css` にまとめない。
+
+| ファイル | 書くもの |
+| --- | --- |
+| `header.css` | `<header>`（`.org-header` とその子孫） |
+| `footer.css` | `<footer>`（`.org-footer` とその子孫） |
+| `top.css` | ページ本体（`.l-main`、`.main-view`、`.section__*`）と `:root` の変数 |
+
+- `:root`（`--main-color`、`--accent-color`、`--section-padding`、インナー幅）は `top.css` の先頭に書く。`header.css` と `footer.css` は変数を参照する。
+- `<head>` では次の順で読み込む。
+
+```html
+<link rel="stylesheet" href="./header.css">
+<link rel="stylesheet" href="./footer.css">
+<link rel="stylesheet" href="./top.css">
+```
+
+- 依頼が CSS の分割に触れない既存改修では、分割のためだけに既存の `style.css` を動かさない。
 - `css/` `js/` 配下への分割がある場合も、クラス名・要件は本仕様に準拠する。
 - 新規サイトの HTML 起点（`php.json`）はルール `html-css` とスキル `figma-html-css` の手順に従う。スニペット上の header / footer 中身は各ファイルへ移し、`index.php` 側は `render()` にする。
 
@@ -91,7 +111,7 @@ if (!function_exists('render')) {
 #### 共通 CSS（属性セレクタ）
 
 - `[class*="section__inner"]` のように、含む文字列を指定した属性セレクタで共通化する。`[class*=""]` は使わない。
-- 共通 CSS は **header / footer / section** ごとに分けて記述する（同一セレクタをサイト全体へ無差別適用しない）。
+- 共通 CSS は **header / footer / section** ごとに分けて記述する（同一セレクタをサイト全体へ無差別適用しない）。記述先はそれぞれ `header.css` / `footer.css` / `top.css`。
 
 ---
 
@@ -193,7 +213,7 @@ AI（Cursor 等）に実装を依頼する場合、以下を必ず守ること�
 
 ### 出力の範囲
 
-- 依頼されたファイル・範囲のみを変更する。無関係なリファクタ、ファイル分割、ライブラリ追加は行わない。header / footer の `header.php` / `footer.php` への分離と `render()` 読み込みは、新規および header / footer を触る実装では行う。
+- 依頼されたファイル・範囲のみを変更する。無関係なリファクタ、ファイル分割、ライブラリ追加は行わない。header / footer の `header.php` / `footer.php` への分離と `render()` 読み込み、および CSS の `header.css` / `footer.css` / `top.css` への分割は、新規およびその範囲を触る実装では行う。
 - 新規ファイルが必要な場合は、本仕様の構成（`images/` 参照、BEM、共通クラス分割など）に合わせる。
 - ドキュメント（README 等）や設定ファイルは、明示的に求められない限り作成・更新しない。
 
