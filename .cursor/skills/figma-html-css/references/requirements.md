@@ -17,7 +17,7 @@
 | サイト名 | NORI（ノリ） |
 | 業種 | 中小企業向け業務効率化 SaaS |
 | ページ種別 | 1 ページ完結の静的 LP（関連コンテンツへの導線は 7 章） |
-| 技術前提 | Figma → `index.php` / `header.php` / `footer.php` / `header.css` / `footer.css` / `top.css` / `org-top.js` / `images/`。header と footer は `index.php` から `render()` で読み込む。CSS は header / footer / ページ本体でファイルを分ける（ルール `html-css`） |
+| 技術前提 | Figma → `index.php` / `header.php` / `footer.php` / `css/header.css` / `css/footer.css` / `css/top.css` / `js/header.js` / `js/org-top.js` / `images/`。header と footer のマークアップは `index.php` から `render()` で読み込む。CSS は `css/`、JS は `js/`。header と footer の CSS・JS は `header.php` から、ページ本体の CSS・JS は `index.php` の `<head>` から読む（ルール `html-css`） |
 
 ### 1.2 目的
 
@@ -159,7 +159,7 @@ NORI LP のセクション順と必須要素。Figma がある場合、見た目
 | 主 CTA ラベル | 「無料で試す」（文言は Figma があれば Figma 優先） |
 | 主 CTA 配置 | Header、Main Visual、最終 CTA に必須。特徴・料金付近への追加は任意 |
 | リンク先 | トライアル申込 URL（実案件で指定。サンプルでは `#trial` または外部申込ページ想定） |
-| ナビ | ページ内アンカー。SP はハンバーガーメニュー（開閉は `org-top.js`） |
+| ナビ | ページ内アンカー。SP はハンバーガーメニュー（開閉は `js/header.js`） |
 | 副導線 | 「資料を見る」等は主 CTA を邪魔しない場合のみ。関連記事は Footer 側 |
 
 ---
@@ -221,7 +221,7 @@ NORI LP のセクション順と必須要素。Figma がある場合、見た目
 4. Figma（または指定デザイン）に沿った見た目で、独自の装飾改変がない（情報設計必須項目の追加は可）
 5. PC / SP（`width <= 768px`）で致命的な崩れがなく、メニューが使える
 6. 画像・リンクはルール `markup` に従い、主要画像のアスペクトが崩れていない
-7. JS は `org-top.js` 集約・インライン禁止・`const`/`let`・レキシカル環境・`js-` 接頭辞などルール準拠である
+7. JS は `js/header.js`（header / footer）と `js/org-top.js`（ページ本体）に分け、インライン禁止・`const`/`let`・レキシカル環境・`js-` 接頭辞などルール準拠である。読み込みは header 側を `header.php`、ページ本体を `index.php` の `<head>` とする
 8. 実装の書き方は `spec.md`（BEM、変数、インナー幅等）に従っている
 9. **定義アンサーブロック**が画像なしで読め、NORI の定義・誰向け・何ができるが分かること
 10. **`h1` が 1 つ**で、主要セクションが適切な見出し階層であること
