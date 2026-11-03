@@ -1,23 +1,24 @@
 ---
-description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。index.php と header.css / footer.css / top.css の LP のときに使う。
-globs: "**/*.html,**/index.php,**/header.php,**/footer.php,**/header.css,**/footer.css,**/top.css,**/style.css"
+description: Figma 基の HTML/CSS。BEM、CSS 変数、インナー幅、メディアクエリ。index.php と css/・js/ に分けた LP のときに使う。
+globs: "**/*.html,**/index.php,**/header.php,**/footer.php,**/css/**/*.css,**/header.css,**/footer.css,**/top.css,**/style.css"
 alwaysApply: false
 ---
 
 # HTML / CSS
 
-- ファイル: `index.php` / `header.php` / `footer.php` / `header.css` / `footer.css` / `top.css` / `org-top.js` / 画像は `images/`。header と footer は個別ファイルにし、`index.php` に直書きしない。クラス要件は守る。
-- CSS は 1 本にまとめず分ける。`header.css` は header（`.org-header` とその子孫）、`footer.css` は footer（`.org-footer` とその子孫）、`top.css` はページ本体（`.l-main`、`.main-view`、`.section__*`）と `:root`。`<head>` では `header.css` → `footer.css` → `top.css` の順で読む。新規で `style.css` は作らない。依頼が CSS の分割に触れない既存改修では、分割のためだけに既存の `style.css` を動かさない。
+- ファイル: `index.php` / `header.php` / `footer.php` / `css/header.css` / `css/footer.css` / `css/top.css` / `js/header.js` / `js/org-top.js` / 画像は `images/`。CSS は `css/`、JS は `js/` に置く。header と footer は個別ファイルにし、`index.php` に直書きしない。クラス要件は守る。
+- CSS は 1 本にまとめず分ける。`css/header.css` は header（`.org-header` とその子孫）、`css/footer.css` は footer（`.org-footer` とその子孫）、`css/top.css` はページ本体（`.l-main`、`.main-view`、`.section__*`）と `:root`。新規で `style.css` は作らない。依頼が CSS の分割や配置に触れない既存改修では、分割や `css/` への移動のためだけに既存の CSS を動かさない。
+- 読み込み: header と footer の CSS（`css/header.css`、`css/footer.css`）と JS（`js/header.js`。footer に処理があるときだけ `js/footer.js`）は `header.php` から読む。ページ本体の CSS（`css/top.css`）と JS（`js/org-top.js`）は `index.php` の `<head>` から読む。`header.php` は `<body>` 先頭で `render()` されるため、そちらの `<link>` と `<script>` は `<body>` 内に置く。
 - `index.php` では `render()` で読み込む。定義と呼び出しの全文はスキル `figma-html-css` の `references/spec.md`。定義が無いときだけ `index.php` 先頭に置く。
 - 依頼が header / footer に触れない既存改修では、分割のためだけに既存の header / footer を動かさない。
 - 新規 LP の骨格は、User スニペット `php.json` と同等の AIO/LLMO（定義ブロック・見出し階層・FAQ・JSON-LD・会社情報）にする。`html.json` は使わない。`<header>` と `<footer>` の中身は `header.php` / `footer.php` に書き、`index.php` は `render()` にする。
-- `:root` は `top.css` の先頭で `--main-color`、`--accent-color`、`--section-padding`、インナー幅を管理する。PC `1140px`、スマホ `89.3333vw`。`header.css` と `footer.css` は変数を参照する。
+- `:root` は `css/top.css` の先頭で `--main-color`、`--accent-color`、`--section-padding`、インナー幅を管理する。PC `1140px`、スマホ `89.3333vw`。`css/header.css` と `css/footer.css` は変数を参照する。`css/top.css` は `index.php` の `<head>` で先に読む。
 - `.section__inner`（または同等）は上記幅、`margin: 0 auto`。
 - BEM: `Block__Element--modifier`。セクションは `section__wrapper--*` / `section__inner--*`。
 - JS から操作する対象には `js-` 接頭辞（例: `js-menu`）。詳細はルール `javascript`（`const`/`let`・レキシカル環境も同ルール）。
 - MQ は `@media (width <= 768px)`。SP のサイズは `vw`。
 - HTML/CSS インデントは 4 スペース。
-- 共通 CSS は `[class*="section__inner"]` のように、含む文字列を指定した属性セレクタを使う。`[class*=""]` は使わない。header / footer / section ごとに分け、記述先は `header.css` / `footer.css` / `top.css`。
+- 共通 CSS は `[class*="section__inner"]` のように、含む文字列を指定した属性セレクタを使う。`[class*=""]` は使わない。header / footer / section ごとに分け、記述先は `css/header.css` / `css/footer.css` / `css/top.css`。
 - `.main-view__img img` は `width: 100%` または `aspect-ratio` で崩れさせない。
 - `<img>` / `<a>` / `target`・`rel` はルール `markup` に従う。
 - フォーカス・キーボード・名前付けはルール `a11y` に従う。

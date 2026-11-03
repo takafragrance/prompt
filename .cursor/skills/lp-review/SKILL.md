@@ -7,7 +7,7 @@ description: Reviews static landing pages for UX/UI, SEO, AIO/LLMO, CRO, accessi
 
 実装スキル（`figma-html-css`）ではなく、指摘を出す。直してほしいと頼まれるまでコードは変えない。
 
-対象は静的 LP（`index.php` / `style.css` / `org-top.js` 等）。React アプリの画面レビューは `react-review`。
+対象は静的 LP（`index.php` / `css/` / `js/` 等。既存の直下 `style.css` や `org-top.js` も含む）。React アプリの画面レビューは `react-review`。
 
 ## 手順
 

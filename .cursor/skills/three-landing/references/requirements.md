@@ -137,8 +137,8 @@
 
 ### 4.3 外部ファイルへの集約（インライン禁止）
 
-- 静的 LP では HTML 内へのインライン `<script>` は禁止する。処理は `org-top.js`（またはプロジェクトで指定した JS / モジュール）に集約する。
-- React の起動は `src/main.tsx`。ページ初期化を `org-top.js` に置かない。
+- 静的 LP では HTML 内へのインライン `<script>` は禁止する。JS は `js/` に置く。header / footer の処理は `js/header.js`（footer に処理があるときだけ `js/footer.js`）に書き、`header.php` から読む。ページ本体の処理は `js/org-top.js` に書き、`index.php` の `<head>` から読む。
+- React の起動は `src/main.tsx`。ページ初期化を `js/org-top.js` に置かない。
 - React の 3D シーンは **React Three Fiber（R3F）** で記述する（`Canvas` / 宣言的なメッシュ・マテリアル等）。imperative な Three.js 初期化を React 側に直書きしない。
 - HTML 要素へのインラインイベントハンドラ（`onclick=""` / `onload=""` など）は禁止する。
 - 静的 LP のイベントは `addEventListener`。React の合成イベントと R3F のイベントは可。
@@ -217,4 +217,4 @@
 4. モデルは Spline で制作し、描画は Three.js で行う（React 利用時は R3F で記述する）
 5. 3D ファイル合計 5MB 以下、テクスチャ最大 2K を守る
 6. ローディング仕様が実装され、必須ブラウザ・端末で閲覧できる
-7. 静的 LP の JS は `org-top.js` に集約し、`const`/`let`・レキシカル環境・`js-`・`addEventListener` に従う。React の起動は `src/main.tsx`、3D は R3F、イベントは合成イベント
+7. 静的 LP の JS は `js/header.js` と `js/org-top.js` に分け、`const`/`let`・レキシカル環境・`js-`・`addEventListener` に従う。React の起動は `src/main.tsx`、3D は R3F、イベントは合成イベント
