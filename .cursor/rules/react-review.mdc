@@ -14,7 +14,7 @@ alwaysApply: false
 - パフォーマンス: 無意味なメモ化をしていないか。依存しない定数・純粋関数はコンポーネントの外に置いているか。リストの `key` に `index` を安易に使っていないか。
 - 型: コンポーネントは `.tsx`。`.jsx` のままなら指摘する。`any` と過度な `as` を排除。Props に型があるか。
 - CSS: Tailwind で組んでいるか。インライン `style` を使っていないか。ネガティブマージンはルール `core`。ルール `react` も照合する。
-- 画像・リンクはルール `markup`。JS はルール `javascript`。a11y はルール `a11y`。ブランド LP はスキル `react-landing` のヒーロー制約。
+- 画像は WebP。リンクはルール `markup`。JS はルール `javascript`。a11y はルール `a11y`。ブランド LP はスキル `react-landing` のヒーロー制約。
 - 重大度は Critical / High / Medium / Low。
 
 宣言、GitHub URL、末尾の text ブロックはスキル `react-review`。3D は `three-review`。

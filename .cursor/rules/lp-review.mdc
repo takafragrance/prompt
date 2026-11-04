@@ -13,6 +13,6 @@ alwaysApply: false
 - 抽象的な指摘は禁止。具体的な修正指示にする。ポジティブから入り建設的に書く。
 - UX/UI（ニールセン、視覚階層、認知負荷）、SEO・AIO/LLMO、CRO、a11y、CWV・セマンティクスを見る。
 - 規約: BEM、`[class*="section__inner"]` のように含む文字列を指定した共通 CSS、ネガティブマージン（ルール `core`）、`js-` 接頭辞、`const`/`let`・レキシカル環境、インライン JS 禁止。
-- 画像・リンクはルール `markup`。a11y はルール `a11y`。
+- 画像は WebP。リンクはルール `markup`。a11y はルール `a11y`。
 
 宣言、GitHub URL、末尾の text ブロックはスキル `lp-review`。React は `react-review`。3D は `three-review`。

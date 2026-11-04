@@ -22,7 +22,7 @@ alwaysApply: true
 
 共通マークアップ・JS・a11y（スキル横断）:
 
-- 画像・リンク（`img` / `figure` / `a` / `target`・`rel`）→ ルール `markup`
+- 画像は WebP（例外はルール `markup`）。マークアップ（`img` / `figure` / `a` / `target`・`rel`）→ ルール `markup`
 - JS（`const`/`let`・レキシカル環境・`js-`）→ ルール `javascript`
 - フォーカス・キーボード・名前付け・モーション → ルール `a11y`
 

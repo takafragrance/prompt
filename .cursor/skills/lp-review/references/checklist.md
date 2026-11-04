@@ -37,7 +37,7 @@
 
 - `title` / meta description が一意で、誰向け・何のページか分かるか。
 - 見出しが論理的か（`h1` は 1 つ、`h2`/`h3` の飛ばしや見た目目的の乱用がないか）。
-- 画像・リンクがルール `markup` どおりか（必須属性、メイン画像原則 1 枚、2 枚目以降 `fetchpriority="low"`、装飾例外、`figure`、裸の `a` 禁止、`target`/`rel`）。
+- 画像は WebP か。リンクがルール `markup` どおりか（必須属性、メイン画像原則 1 枚、2 枚目以降 `fetchpriority="low"`、装飾例外、`figure`、裸の `a` 禁止、`target`/`rel`）。
 
 ### E-E-A-T
 

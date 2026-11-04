@@ -16,7 +16,7 @@
 | CSS（ページ本体） | `css/top.css`（`index.php` の `<head>` から読む） |
 | JavaScript（header / footer） | `js/header.js`（`header.php` から読む。footer に処理があるときだけ `js/footer.js` も `header.php` から読む） |
 | JavaScript（ページ本体） | `js/org-top.js`（`index.php` の `<head>` から読む） |
-| 画像資産 | すべて `images/` に **WebP** で保存・参照する（例外は SVG / 必要な PNG）。形式の正本はルール `markup` |
+| 画像資産 | すべて `images/` に **WebP** で保存・参照する（例外はルール `markup`） |
 
 - `header.php` と `footer.php` は必ず個別ファイルにする。`index.php` に `<header>` / `<footer>` を直書きしない。
 - メイン（`index.php`）では `render()` で読み込む。定義が無いプロジェクトだけ、`index.php` 先頭に置く。

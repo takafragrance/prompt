@@ -16,7 +16,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 レビュ〜〜〜〜やるぅぅ〜〜
 
 2. 対象の `src/` と差分を読む。呼び出し元まで辿る。
-3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像・リンクはルール `markup`、JS はルール `javascript` も照合する。
+3. チェックリストは [references/checklist.md](references/checklist.md) に従う。画像は WebP。リンクはルール `markup`、JS はルール `javascript` も照合する。
 4. 優先順位はルール `core`。
 5. 指摘だけ出す。依頼がない限り修正しない。
 
@@ -31,7 +31,7 @@ description: Reviews React code for extra code, clarity, vulnerabilities, Hooks,
 - 3. コンポーネントの設計と責務の分離
 - 4. パフォーマンスの最適化
 - 5. 型安全と堅牢性（`.tsx`。Props の型、`any` / `as`）
-- 6. 画像・リンクマークアップ（ルール `markup`）
+- 6. 画像・リンクマークアップ（画像は WebP。ルール `markup`）
 - 7. CSS 規約（Tailwind、インライン `style` 禁止、ネガティブマージンはルール `core`）
 - 8. アクセシビリティ（ルール `a11y`）
 - 9. ヒーロー（ブランド LP のとき。スキル `react-landing` の `references/design.md`。CRUD 画面なら「対象外」と一行）
