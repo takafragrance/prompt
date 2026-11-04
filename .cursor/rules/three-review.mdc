@@ -11,7 +11,7 @@ alwaysApply: false
 - 必須: WebGL 不可・古い端末・`prefers-reduced-motion` のフォールバック（静止画優先）。情報 HTML は残るか。技術エラー文言は出ていないか。
 - 容量: 3D 合計 5MB 以下、テクスチャ最大 2K。Spline embed 禁止。React なら R3F（imperative 直書き禁止）。React の起動は `src/main.tsx`。
 - ローディングの有無を定義する（重いアセットでは有）。失敗時は止めてフォールバック。装飾 canvas は `aria-hidden`。CTA はキーボード到達可。
-- フォールバック画像・リンクはルール `markup`。JS はルール `javascript`。
+- フォールバック画像は WebP。リンクはルール `markup`。JS はルール `javascript`。
 - 重大度は Critical / High / Medium / Low。
 
 宣言、GitHub URL、末尾の text ブロックはスキル `three-review`。静的 LP は `lp-review`、React アプリは `react-review`。

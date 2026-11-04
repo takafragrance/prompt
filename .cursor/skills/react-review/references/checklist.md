@@ -124,6 +124,7 @@ React の UI は `.tsx`。`.jsx` のコンポーネントは指摘する。
 
 ルール `markup` に照合する。
 
+- ラスタ画像は WebP か（例外はルール `markup`）。
 - コンテンツ画像の必須属性・`<figure>`、装飾例外。
 - メイン画像は原則 1 枚（`fetchPriority="high"`）。2 枚目以降は `fetchPriority="low"`。high に lazy/async が付いていないか。
 - `<a>` / `<Link>` が裸でないか。

@@ -35,12 +35,13 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
 - React の UI（エントリ、画面、コンポーネント）は `.tsx`。`.jsx` は新規に作らない。依頼で触る `.jsx` は同じ変更の中で `.tsx` にする。
-- 画像は機能フォルダの `images/` に置く（`src/<feature>/images/`）。`assets/` や `public/` には置かない。
+- 画像は機能フォルダの `images/` に WebP で置く（`src/<feature>/images/`）。`assets/` や `public/` には置かない。形式の正本はルール `markup`。
 
 ### 画像・リンクマークアップ
 
 正本はルール `markup`。要点:
 
+- ラスタ画像は WebP。
 - コンテンツ画像: 必須属性 + `<figure>` / `<figcaption>`。
 - メイン画像は原則 1 枚（`fetchPriority="high"`、lazy/async なし）。2 枚目以降は `fetchPriority="low"`。
 - 装飾／UI アイコンは `alt=""`・`figure` 省略可。

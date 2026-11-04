@@ -15,6 +15,6 @@ alwaysApply: false
 - ヒーローにカードを使わない。カードはユーザー操作の容器として必要なときだけ。
 - セクションは 1 目的・見出し 1・短い補足。動きは 2〜3 の意図的なものに限定。
 - ルート追加時は `react-router-dom` を更新する。`src/routes.js` が既にあるときだけ `KNOWN_PATHS` も更新する。
-- 画像・リンクはルール `markup`。a11y はルール `a11y`。
+- 画像は WebP。リンクはルール `markup`。a11y はルール `a11y`。
 
 手順はスキル `react-landing` を使う。CRUD・状態中心は `react-app`。3D 中核は `three-landing`。
