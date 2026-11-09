@@ -10,7 +10,7 @@ alwaysApply: false
 
 ## 画像フォーマット
 
-- 書き出し・参照は原則 **WebP**（`.webp`）。`images/` 配下に置く。
+- 書き出し・参照は原則 **WebP**（`.webp`）。静的 LP は `images/`、Vite React は `public/images/`（機能ごとなら `public/images/<feature>/`）に置く。
 - SVG が適切なアイコン・ロゴは SVG のまま可。
 - アニメーションや透過要件で WebP が不適切な場合のみ PNG / GIF 等を使う。
 
