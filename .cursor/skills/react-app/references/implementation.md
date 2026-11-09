@@ -35,7 +35,7 @@ Vite + React の既存プロジェクトで、画面・コンポーネント・�
 
 - 新規ファイルは依頼範囲に必要なものだけ。同じ責務のヘルパが既にあればそれを使う。
 - React の UI（エントリ、画面、コンポーネント）は `.tsx`。`.jsx` は新規に作らない。依頼で触る `.jsx` は同じ変更の中で `.tsx` にする。
-- 画像は機能フォルダの `images/` に WebP で置く（`src/<feature>/images/`）。`assets/` や `public/` には置かない。形式の正本はルール `markup`。
+- 画像は Vite の `public/images/`（機能ごとなら `public/images/<feature>/`）に WebP で置く。`src/` 配下の `assets/` / `images/` には置かない。参照は `import.meta.env.BASE_URL` 付きのパス（例: `` `${import.meta.env.BASE_URL}images/hero.webp` ``）。形式の正本はルール `markup`。
 
 ### 画像・リンクマークアップ
 
